@@ -123,5 +123,14 @@ function drawSnow() {
     });
 }
 /* 调用及控制方法 */
-var snow = new snowFall({maxFlake:200});
-snow.start();
+
+window.onload = function() {
+      var element = document.getElementById("myElement");
+      var width = element.offsetWidth;
+      var height = element.offsetHeight;
+      console.log("Width: " + width + "px");
+      console.log("Height: " + height + "px");
+		
+	var snow = new snowFall({maxFlake:200});
+	snow.start();
+};
