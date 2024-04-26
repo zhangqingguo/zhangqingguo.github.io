@@ -125,7 +125,7 @@ function drawSnow() {
 /* 调用及控制方法 */
 
 window.onload = function() {
-      var element = document.getElementById("myElement");
+      var element = document.body;
       var width = element.offsetWidth;
       var height = element.offsetHeight;
       console.log("Width: " + width + "px");
