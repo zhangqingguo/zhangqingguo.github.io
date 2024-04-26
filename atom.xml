@@ -33,7 +33,7 @@
     
     
     
-    <category term="test" scheme="http://example.com/categories/test/"/>
+    <category term="test" scheme="http://example.com/category/test/"/>
     
     
   </entry>
