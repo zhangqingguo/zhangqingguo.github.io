@@ -3,11 +3,11 @@
   <title>Hexo</title>
   
   
-  <link href="http://example.com/atom.xml" rel="self"/>
+  <link href="https://github.com/zhangqingguo/zhangqingguo.github.io/atom.xml" rel="self"/>
   
-  <link href="http://example.com/"/>
+  <link href="https://github.com/zhangqingguo/zhangqingguo.github.io/"/>
   <updated>2024-04-26T08:04:53.738Z</updated>
-  <id>http://example.com/</id>
+  <id>https://github.com/zhangqingguo/zhangqingguo.github.io/</id>
   
   <author>
     <name>John Doe</name>
@@ -18,8 +18,8 @@
   
   <entry>
     <title>Hello World</title>
-    <link href="http://example.com/2023/11/20/hello-world/"/>
-    <id>http://example.com/2023/11/20/hello-world/</id>
+    <link href="https://github.com/zhangqingguo/zhangqingguo.github.io/2023/11/20/hello-world/"/>
+    <id>https://github.com/zhangqingguo/zhangqingguo.github.io/2023/11/20/hello-world/</id>
     <published>2023-11-20T07:31:31.970Z</published>
     <updated>2024-04-26T08:04:53.738Z</updated>
     
@@ -33,10 +33,10 @@
     
     
     
-    <category term="test" scheme="http://example.com/category/test/"/>
+    <category term="test" scheme="https://github.com/zhangqingguo/zhangqingguo.github.io/category/test/"/>
     
     
-    <category term="Interview" scheme="http://example.com/tags/Interview/"/>
+    <category term="Interview" scheme="https://github.com/zhangqingguo/zhangqingguo.github.io/tags/Interview/"/>
     
   </entry>
   
