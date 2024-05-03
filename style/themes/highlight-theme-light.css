@@ -5,13 +5,15 @@
 /* Comment */
 .hljs-comment,
 .hljs-quote {
-  color: #696969;
+  color: #a50;
+}
+.hljs-tag{
+	color: #170;
 }
 
 /* Red */
 .hljs-variable,
 .hljs-template-variable,
-.hljs-tag,
 .hljs-name,
 .hljs-selector-id,
 .hljs-selector-class,
@@ -29,7 +31,7 @@
 .hljs-params,
 .hljs-meta,
 .hljs-link {
-  color: #aa5d00;
+  color: #30a;
 }
 
 /* Yellow */
@@ -53,6 +55,7 @@
 
 /* Purple */
 .hljs-keyword,
+.hljs-attr,
 .hljs-selector-tag {
   color: #7928a1;
 }
@@ -96,4 +99,43 @@
   .hljs-selector-tag {
     font-weight: bold;
   }
+}
+
+/*在.hljs-ln上创建一个弹性盒子布局，使内容垂直居中。*/
+.hljs-ln {
+  display: flex;
+  align-items: center;
+
+}
+.hljs-ln-numbers {
+	/*
+        text-align: center;
+        color: #ccc;
+        border-right: 1px solid #CCC;
+        vertical-align: top;
+        padding-right: 5px !important;
+ */
+        /* your custom style here */
+	
+	text-align: center !important;
+	height: 35px;
+    /*width: 25px;*/
+    border-right: 1px solid #c5c5c5 !important;
+	/*float: left;*/
+    height: 22px;
+	word-wrap: normal;
+    }
+ 
+
+.hljs-ln-n {
+    text-align: right !important;
+	 width: fit-content;
+    margin-right: 2px; /* 根据需要调整间距 */
+	display: inline-block;
+    vertical-align: middle !important;
+
+}
+.hljs-ln-code{
+	border: 0 !important;
+	padding-left: 5px !important;
 }

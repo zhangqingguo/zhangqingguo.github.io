@@ -167,8 +167,9 @@ var $posts = {
         })
     },
     mounted: function () {
-        hljs && hljs.initHighlighting()
-
+		//��汾��hljs.highlightAll()���Ͱ汾hljs.inithighlight()
+        hljs && hljs.highlightAll()
+		hljs && hljs.initLineNumbersOnLoad();
         var Scroller = this.scroller()
         var scrollerInstance = new Scroller()
 

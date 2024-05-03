@@ -1889,7 +1889,7 @@ fieldset[disabled] .button {
 
 @media screen and (min-width: 1216px) {
   .container:not(.is-max-desktop) {
-    max-width: 1152px;
+    max-width: 1200px;
   }
 }
 
@@ -2059,8 +2059,9 @@ fieldset[disabled] .button {
 .content table td,
 .content table th {
   border: 1px solid #dbdbdb;
-  border-width: 0 0 1px;
-  padding: 0.5em 0.75em;
+  /*border-width: 0 0 1px;*/
+  border-width: 0 1px 0 0;
+  /*padding: 0.5em 0.75em;*/
   vertical-align: top;
 }
 

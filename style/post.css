@@ -43,6 +43,7 @@
   padding: 15px;
   border: 1px solid var(--border-line-color);
   background: var(--pre-code-bg-color);
+  font-family: "Roboto Mono", consolas, Menlo, monospace, "PingFang SC", "Microsoft YaHei";
 }
 .post-page .post-content .hljs {
   color: var(--second-text-color);
