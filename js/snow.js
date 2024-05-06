@@ -133,4 +133,9 @@ window.onload = function() {
 		
 	var snow = new snowFall({maxFlake:200});
 	snow.start();
+	//调一下live2d的位置
+	var divElement = document.getElementById("live2d-widget");
+	if(null != divElement && 'undefined'!=divElement){
+		divElement.style.right = "-50px";
+	}
 };
