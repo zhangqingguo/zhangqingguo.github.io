@@ -246,7 +246,7 @@ Vue实例和容器是一一对应的,不能一对多和多对一
 &lt;/script&gt;
 </code></pre>
 <p>如图：</p>
-<p><img src="/image-20250123165409650.png" alt="image-20250123165409650"></p>
+<p><img src="/2025/01/23/Vue2%E5%AD%A6%E4%B9%A0/image-20250123165409650.png" alt="image-20250123165409650"></p>
 <p>如果不将相应的配置设置为true，修改不起作用，删除也返回false，也无法枚举。</p>
 <p>使用getter和setter时：</p>
 <pre><code class="javascript">&lt;script type="text/javascript"&gt;
@@ -273,7 +273,7 @@ Vue实例和容器是一一对应的,不能一对多和多对一
   console.log(person);
 &lt;/script&gt;
 </code></pre>
-<p><img src="/image-20250123170003588.png" alt="image-20250123170003588"></p>
+<p><img src="/2025/01/23/Vue2%E5%AD%A6%E4%B9%A0/image-20250123170003588.png" alt="image-20250123170003588"></p>
 <p>每次访问person.age时，会触发getter函数，返回num值；当设置person.age = xx值时，会把值设置给num，这样再次读取会返回最新的num值，（直接设置num值，获取age值也是返回设置后的num值）这样就实现了数据代理。</p>
 <p><strong>Vue中的数据代理</strong></p>
 <p>Vue中的数据代理：通过vm对象来代理data对象中属性的操作（读/写）<br>Vue中数据代理的好处：更加方便的操作data中的数据<br>基本原理：<br>通过Object.defineProperty()把data对象中所有属性添加到vm上。<br>为每一个添加到vm上的属性，都指定一个getter/setter。<br>在getter/setter内部去操作（读/写）data中对应的属性。</p>
@@ -305,7 +305,7 @@ Vue实例和容器是一一对应的,不能一对多和多对一
 &lt;/body&gt;
 &lt;/html&gt;
 </code></pre>
-<p><img src="/image-20250123175247017.png" alt="image-20250123175247017"></p>
-<p><img src="/image-20250123175508777.png" alt="image-20250123175508777"></p>
-<p><img src="/image-20250123175744591.png" alt="image-20250123175744591"></p>
+<p><img src="/2025/01/23/Vue2%E5%AD%A6%E4%B9%A0/image-20250123175247017.png" alt="image-20250123175247017"></p>
+<p><img src="/2025/01/23/Vue2%E5%AD%A6%E4%B9%A0/image-20250123175508777.png" alt="image-20250123175508777"></p>
+<p><img src="/2025/01/23/Vue2%E5%AD%A6%E4%B9%A0/image-20250123175744591.png" alt="image-20250123175744591"></p>
 </article><section class="jump-container is-flex is-justify-content-space-between my-6"><!-- em is empty placeholder--><em></em><a class="button is-default" href="/2024/12/25/%E6%94%AF%E4%BB%98%E5%AE%9DV3%E6%8E%A5%E5%8F%A3%E6%8E%A5%E5%85%A5/" title="支付宝V3接口接入"><span class="has-text-weight-semibold">Next: 支付宝V3接口接入</span><i class="iconfont icon-next ml-2 has-text-grey"></i></a></section><article class="mt-6 comment-container"><script async repo="zhangqingguo/zhangqingguo.github.io" src="https://utteranc.es/client.js" issue-term="pathname" theme="preferred-color-scheme"></script></article></div></div></main></main><footer class="is-flex is-flex-direction-column is-align-items-center is-flex-shrink-0 is-family-serif"><section class="sns-container"><a title="twitter" target="_blank" rel="noopener nofollow" href="//twitter.com//"><i class="iconfont icon-twitter"></i></a><!-- Github--><a title="github" target="_blank" rel="noopener nofollow" href="//github.com/zhangqingguo"><i class="iconfont icon-github"></i></a><!-- Ins--><a title="instagram" target="_blank" rel="noopener nofollow" href="//www.instagram.com//"><i class="iconfont icon-ins"></i></a><!-- RSS--><!-- 知乎--><!-- 领英--><!-- 脸书--><a title="facebook" target="_blank" rel="noopener nofollow" href="//www.facebook.com//"><i class="iconfont icon-tian7_facebook"></i></a></section><p><span>Copyright ©</span><span> ZQG 2025</span></p><div class="is-flex is-justify-content-center is-flex-wrap-wrap"><p>Powered by Hexo &verbar;&nbsp;</p><p class="is-flex is-justify-content-center"><a title="Hexo theme author" target="_blank" rel="noopener" href="//github.com/haojen">Theme by Haojen&nbsp;</a></p><div style="margin-top: 2px"><a class="github-button" title="github-button" target="_blank" rel="noopener" href="https://github.com/haojen/hexo-theme-Claudia" data-color-scheme="no-preference: light; light: light; dark: dark;" data-show-count="true"></a></div></div><div><span></span></div></footer><script async defer src="https://buttons.github.io/buttons.js"></script><script src="/js/jquery-3.6.1.min.js"></script><script src="/js/jquery-fancybox.min.js"></script><script src="/js/img_zoom.js"></script><script src="/js/post.js"> </script><script src="/live2d_models/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2d_models/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2d_models/assets/Bronya.model.json"},"display":{"position":"right","width":240,"height":360,"right":"-80px","hOffset":0,"vOffset":-20},"mobile":{"show":true},"react":{"opacity":0.7},"log":false});</script></body></html>
