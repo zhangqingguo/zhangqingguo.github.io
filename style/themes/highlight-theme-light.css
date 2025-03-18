@@ -1,0 +1,141 @@
+/* a11y-light theme */
+/* Based on the Tomorrow Night Eighties theme: https://github.com/isagalaev/highlight.js/blob/master/src/styles/tomorrow-night-eighties.css */
+/* @author: ericwbailey */
+
+/* Comment */
+.hljs-comment,
+.hljs-quote {
+  color: #a50;
+}
+.hljs-tag{
+	color: #170;
+}
+
+/* Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+  color: #d91e18;
+}
+
+/* Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+  color: #30a;
+}
+
+/* Yellow */
+.hljs-attribute {
+  color: #aa5d00;
+}
+
+/* Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+  color: #008000;
+}
+
+/* Blue */
+.hljs-title,
+.hljs-section {
+  color: #007faa;
+}
+
+/* Purple */
+.hljs-keyword,
+.hljs-attr,
+.hljs-selector-tag {
+  color: #7928a1;
+}
+
+.hljs {
+  display: block;
+  overflow-x: auto;
+  background: #fefefe;
+  color: #545454;
+  padding: 0.5em;
+}
+
+.hljs-emphasis {
+  font-style: italic;
+}
+
+.hljs-strong {
+  font-weight: bold;
+}
+
+@media screen and (-ms-high-contrast: active) {
+  .hljs-addition,
+  .hljs-attribute,
+  .hljs-built_in,
+  .hljs-builtin-name,
+  .hljs-bullet,
+  .hljs-comment,
+  .hljs-link,
+  .hljs-literal,
+  .hljs-meta,
+  .hljs-number,
+  .hljs-params,
+  .hljs-string,
+  .hljs-symbol,
+  .hljs-type,
+  .hljs-quote {
+    color: highlight;
+  }
+
+  .hljs-keyword,
+  .hljs-selector-tag {
+    font-weight: bold;
+  }
+}
+
+/*在.hljs-ln上创建一个弹性盒子布局，使内容垂直居中。*/
+.hljs-ln {
+  display: flex;
+  align-items: center;
+
+}
+.hljs-ln-numbers {
+	/*
+        text-align: center;
+        color: #ccc;
+        border-right: 1px solid #CCC;
+        vertical-align: top;
+        padding-right: 5px !important;
+ */
+        /* your custom style here */
+	
+	text-align: center !important;
+	height: 35px;
+    /*width: 25px;*/
+    border-right: 1px solid #c5c5c5 !important;
+	/*float: left;*/
+    height: 22px;
+	word-wrap: normal;
+    }
+ 
+
+.hljs-ln-n {
+    text-align: right !important;
+	 width: fit-content;
+    margin-right: 2px; /* 根据需要调整间距 */
+	display: inline-block;
+    vertical-align: middle !important;
+
+}
+.hljs-ln-code{
+	border: 0 !important;
+	padding-left: 5px !important;
+}

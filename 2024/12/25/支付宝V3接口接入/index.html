@@ -1,0 +1,1083 @@
+<!DOCTYPE html><html class="appearance-auto" lang="en"><head><meta charset="UTF-8"><title>支付宝V3接口接入</title><meta name="description" content="666"><meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, initial-scale=1"><!-- 解决403图片防盗链的问题 -->    <meta content="no-referrer" name="referrer"><!-- Google Analytics --><!-- End Google Analytics -->
+<!-- Baidu Analytics --><!-- End Baidu Analytics --><link rel="icon" href="/images/favicon.ico"><link rel="stylesheet" href="/style/common/bulma.css"><link rel="stylesheet" href="/style/base.css"><link rel="stylesheet" href="/style/common/helper.css"><link rel="stylesheet" href="/style/custom.css"><script src="/js/common.js"></script><link rel="stylesheet" href="/style/post.css"><link rel="stylesheet" href="/style/themes/highlight-theme-light.css"><link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.5.2/css/all.css"><!--link(rel='stylesheet', href= url_for('/style/themes/monokai-sublime.min.css'))--><link rel="stylesheet" href="/style/common/jquery.fancybox.min.css"><!--script(src= url_for("/js/highlight.pack.js"))--><script src="/js/highlight.min.js"></script><style type="text/css">code[class*="language-"], pre[class*="language-"] { white-space: pre !important; }</style><script src="https://cdn.bootcdn.net/ajax/libs/clipboard.js/2.0.11/clipboard.min.js"> </script><script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script><script src="https://cdn.bootcdn.net/ajax/libs/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"></script><script src="/js/hightlight/codeBLang.js"> </script><script src="/js/hightlight/codeBlockFuction.js"> </script><script src="/js/hightlight/codeCopy.js"> </script><script src="/js/hightlight/fullScreen.js"> </script><script src="/js/hightlight/codeShrink.js"> </script><meta name="description" content="SpringBoot项目接入支付宝v3接口1、接入准备首先到支付宝开放平台注册或者登录，选择移动/网页支付，按照页面的指引进行接入（正式生产环境是必须要申请账号、创建应用、配置相关参数等）。如果只是开发测试，可以使用支付宝提供的沙箱环境，下面的所有的内容都是基于沙箱环境的。
+打开控制台首页 - 开放平台，选择开发工具里的沙箱，可以查看支付宝分配给你的沙箱环境账号信息，特别是公钥和私钥，或者证书。本次开发，我用的是公钥和私钥的接口加签方式，使用证书也可以，只不过在1.0和2.0版本的接口，公私钥和证书的代码有些许不同，貌似在3.0版本中，代码都一样，只要在AlipayConfig中给相应字段赋值接可以了。
+总之，接入准备的步骤，详细看支付宝官方文档，这里就不详细介绍了。
+2、开发环境开发工具：idea + m.."><meta name="generator" content="Hexo 7.0.0">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+<link rel="alternate" href="/atom.xml" title="ZQG的博客" type="application/atom+xml">
+</head><body class="is-flex is-flex-direction-column"><header class="header-widget is-flex-shrink-0 is-hidden-mobile"><div class="container is-fullhd is-flex is-justify-content-space-between is-align-items-center is-full-height"><section class="is-hidden-mobile is-flex-shrink-0"><h2><a href="/">ZQG's blog  </a><iframe frameborder="0" height="20" hspace="0" scrolling="no" src="https://i.tianqi.com/?c=code&amp;a=getcode&amp;id=1&amp;icon=1" width="550"></iframe><iframe clocktype="html5" frameborder="no" scrolling="no" style="overflow:hidden;border:0;margin:0;padding:0;width:140px;height:25px;" src="https://www.clocklink.com/html5embed.php?clock=047&amp;timezone=CCT&amp;color=black&amp;size=140&amp;Title=&amp;Message=&amp;Target=&amp;From=2024,1,1,0,0,0&amp;Color=black"></iframe></h2></section><h3 class="is-hidden-mobile is-family-serif is-full-height is-flex is-align-items-center is-flex-shrink-0"><div class="is-full-height" id="postTopic"><p class="is-full-height is-flex-shrink-0 is-flex is-align-items-center is-justify-content-center">支付宝V3接口接入</p><p class="is-full-height is-flex-shrink-0 is-flex is-align-items-center is-justify-content-center">Click back to the top</p></div></h3><aside class="is-flex-shrink-0"><h3 class="is-inline-block"><a href="/">Home</a></h3><h3 class="is-inline-block"><a href="/archives">Archives</a></h3><h3 class="is-inline-block"><a href="/about">About</a></h3></aside></div></header><header class="is-flex header-widget is-flex-shrink-0 is-align-items-center is-justify-content-center is-hidden-tablet"><h3 class="is-inline-block"><a href="/">Home</a></h3><h3 class="is-inline-block"><a href="/archives">Archives</a></h3><h3 class="is-inline-block"><a href="/about">About</a></h3></header><main><main class="container is-max-widescreen content section post-page pt-4 px-4"><div class="columns is-flex-desktop is-justify-content-center is-flex-direction-row-reverse"><div class="column is-3 is-hidden-mobile"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#SpringBoot%E9%A1%B9%E7%9B%AE%E6%8E%A5%E5%85%A5%E6%94%AF%E4%BB%98%E5%AE%9Dv3%E6%8E%A5%E5%8F%A3"><span class="toc-text">SpringBoot项目接入支付宝v3接口</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1%E3%80%81%E6%8E%A5%E5%85%A5%E5%87%86%E5%A4%87"><span class="toc-text">1、接入准备</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2%E3%80%81%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83"><span class="toc-text">2、开发环境</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3%E3%80%81%E7%BC%96%E5%86%99%E6%B5%8B%E8%AF%95%E4%BB%A3%E7%A0%81"><span class="toc-text">3、编写测试代码</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-%E6%94%AF%E4%BB%98%E5%AE%9D%E6%8E%A5%E5%8F%A3%E7%9A%84%E9%85%8D%E7%BD%AE%E4%BF%A1%E6%81%AF"><span class="toc-text">3.1 支付宝接口的配置信息</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-%E7%94%B5%E8%84%91%E7%BD%91%E7%AB%99%E6%94%AF%E4%BB%98"><span class="toc-text">3.2 电脑网站支付</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%94%AF%E4%BB%98%E6%B5%81%E7%A8%8B%EF%BC%9A"><span class="toc-text">支付流程：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%B0%83%E7%94%A8%E7%A4%BA%E4%BE%8B"><span class="toc-text">调用示例</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%A4%BA%E4%BE%8B%E4%BB%A3%E7%A0%81%EF%BC%9A"><span class="toc-text">示例代码：</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-3-APP%E6%94%AF%E4%BB%98"><span class="toc-text">3.3 APP支付</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%A4%BA%E4%BE%8B%E4%BB%A3%E7%A0%81%EF%BC%9A-1"><span class="toc-text">示例代码：</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-4-%E6%89%8B%E6%9C%BA%E7%BD%91%E7%AB%99%E6%94%AF%E4%BB%98"><span class="toc-text">3.4 手机网站支付</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B5%81%E7%A8%8B%E5%9B%BE"><span class="toc-text">流程图</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AF%B9%E6%AF%94%E6%80%BB%E7%BB%93"><span class="toc-text">对比总结</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E6%89%8B%E6%9C%BA%E7%BD%91%E7%AB%99%E8%BD%ACNative%E6%94%AF%E4%BB%98"><span class="toc-text">如何实现手机网站转Native支付</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-5-%E9%80%80%E6%AC%BE%E6%8E%A5%E5%8F%A3"><span class="toc-text">3.5 退款接口</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%80%80%E6%AC%BE%E8%AF%B4%E6%98%8E"><span class="toc-text">退款说明</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-6-%E8%AE%A2%E5%8D%95%E6%9F%A5%E8%AF%A2%E6%8E%A5%E5%8F%A3"><span class="toc-text">3.6 订单查询接口</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-7-%E4%BA%A4%E6%98%93%E5%85%B3%E9%97%AD%E6%8E%A5%E5%8F%A3"><span class="toc-text">3.7 交易关闭接口</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-8-%E5%BC%82%E6%AD%A5%E9%80%9A%E7%9F%A5%E6%8E%A5%E5%8F%A3"><span class="toc-text">3.8 异步通知接口</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-9-%E4%B8%80%E4%BA%9B%E8%A6%81%E6%B3%A8%E6%84%8F%E7%9A%84%E4%BF%A1%E6%81%AF"><span class="toc-text">3.9 一些要注意的信息</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BA%A4%E6%98%93%E7%8A%B6%E6%80%81%E6%B5%81%E7%A8%8B"><span class="toc-text">交易状态流程</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BC%82%E6%AD%A5%E9%80%9A%E7%9F%A5%EF%BC%9A"><span class="toc-text">异步通知：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%A7%A6%E5%8F%91%E5%BC%82%E6%AD%A5%E9%80%9A%E7%9F%A5%E6%9D%A1%E4%BB%B6"><span class="toc-text">触发异步通知条件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%80%80%E6%AC%BE%E6%98%AF%E5%90%A6%E4%BC%9A%E6%94%B6%E5%88%B0%E5%BC%82%E6%AD%A5"><span class="toc-text">退款是否会收到异步</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9"><span class="toc-text">注意事项</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%85%B3%E4%BA%8E%E5%BC%82%E6%AD%A5%E9%80%9A%E7%9F%A5%E7%9A%84%E9%AA%8C%E7%AD%BE"><span class="toc-text">关于异步通知的验签</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4%E3%80%81%E5%AE%8C%E6%95%B4%E4%BB%A3%E7%A0%81%EF%BC%9A%E5%8F%AA%E6%98%AF%E6%B5%8B%E8%AF%95%E4%BB%A3%E7%A0%81%EF%BC%8C%E6%8E%A5%E5%8F%A3%E9%83%BD%E6%98%AFget%E8%AF%B7%E6%B1%82%EF%BC%8C%E6%AD%A3%E5%BC%8F%E6%8E%A5%E5%85%A5%E8%BF%98%E9%9C%80%E5%AE%8C%E5%96%84%E3%80%82"><span class="toc-text">4、完整代码：只是测试代码，接口都是get请求，正式接入还需完善。</span></a></li></ol></li></ol></li></ol></div><div class="column is-9"><header class="my-4"><a href="/tags/Alipay"><i class="tag post-item-tag">Alipay</i></a><a href="/tags/SpringBoot"><i class="tag post-item-tag">SpringBoot</i></a></header><h1 class="mt-0 mb-1 is-family-serif" id="postTitle">支付宝V3接口接入</h1><time class="has-text-grey" datetime="2024-12-25T07:18:26.000Z">2024-12-25</time><article class="mt-2 post-content"><h1 id="SpringBoot项目接入支付宝v3接口"><a href="#SpringBoot项目接入支付宝v3接口" class="headerlink" title="SpringBoot项目接入支付宝v3接口"></a>SpringBoot项目接入支付宝v3接口</h1><h2 id="1、接入准备"><a href="#1、接入准备" class="headerlink" title="1、接入准备"></a>1、接入准备</h2><p>首先到<a target="_blank" rel="noopener" href="https://open.alipay.com/">支付宝开放平台</a>注册或者登录，选择移动/网页支付，按照页面的指引进行接入（正式生产环境是必须要申请账号、创建应用、配置相关参数等）。如果只是开发测试，可以使用支付宝提供的沙箱环境，下面的所有的内容都是基于沙箱环境的。</p>
+<p>打开<a target="_blank" rel="noopener" href="https://open.alipay.com/develop/manage">控制台首页 - 开放平台</a>，选择开发工具里的沙箱，可以查看支付宝分配给你的沙箱环境账号信息，特别是公钥和私钥，或者证书。本次开发，我用的是公钥和私钥的接口加签方式，使用证书也可以，只不过在1.0和2.0版本的接口，公私钥和证书的代码有些许不同，貌似在3.0版本中，代码都一样，只要在AlipayConfig中给相应字段赋值接可以了。</p>
+<p>总之，接入准备的步骤，详细看支付宝官方文档，这里就不详细介绍了。</p>
+<h2 id="2、开发环境"><a href="#2、开发环境" class="headerlink" title="2、开发环境"></a>2、开发环境</h2><p>开发工具：idea + maven</p>
+<pre><code class="properties">SpringBoot.version=2.7.8
+alipay-sdk-java-v3.version=3.1.22.ALL
+</code></pre>
+<p>在pom文件引入支付宝v3版本的依赖：（注意如果SpringBoot的版本过低，会导致OkHttp的版本变低，导致接口调用失败，要么直接强制指定OkHttp的版本为alipay-sdk-java-v3中引用的，如4.9.3，要么升级SpringBoot的版本，2.7.8是没问题的）</p>
+<pre><code class="xml">&lt;dependency&gt;
+    &lt;groupId&gt;com.alipay.sdk&lt;/groupId&gt;
+    &lt;artifactId&gt;alipay-sdk-java-v3&lt;/artifactId&gt;
+&lt;/dependency&gt;
+</code></pre>
+<h2 id="3、编写测试代码"><a href="#3、编写测试代码" class="headerlink" title="3、编写测试代码"></a>3、编写测试代码</h2><h3 id="3-1-支付宝接口的配置信息"><a href="#3-1-支付宝接口的配置信息" class="headerlink" title="3.1 支付宝接口的配置信息"></a>3.1 支付宝接口的配置信息</h3><p>实际项目开发，配置信息放在配置文件中，如果用证书，证书一定要妥善保管，一般放在服务器里。这里直接就写死了，配置信息来自支付宝的沙箱账号信息。</p>
+<pre><code class="java">private AlipayConfig getAlipayConfig() {
+    AlipayConfig alipayConfig = new AlipayConfig();
+    //alipayConfig.setServerUrl("https://openapi.alipay.com");
+    alipayConfig.setServerUrl("https://openapi-sandbox.dl.alipaydev.com");
+    alipayConfig.setAppId("9021xxxxxxxxxxxxx");
+    alipayConfig.setPrivateKey("MIIEvAIBADANxxxxxxxxxxxxxxx");
+    alipayConfig.setAlipayPublicKey("MIIBIjANBgxxxxxxxxxxxxxxx");
+    return alipayConfig;
+}
+</code></pre>
+<h3 id="3-2-电脑网站支付"><a href="#3-2-电脑网站支付" class="headerlink" title="3.2 电脑网站支付"></a>3.2 电脑网站支付</h3><p>这个就是常见的在电脑浏览器上点击支付，会出现二维码或者登录支付宝账户，扫码或者输入支付密码然后支付完成。详细文档：<a target="_blank" rel="noopener" href="https://opendocs.alipay.com/open-v3/05w3qc">产品介绍 - 支付宝文档中心</a></p>
+<p>支付宝的文档十分详细，但是初次接入肯定会有点眼花缭乱，下面我挑一些重点的内容来将和我踩过的一些坑。</p>
+<h4 id="支付流程："><a href="#支付流程：" class="headerlink" title="支付流程："></a>支付流程：</h4><p>电脑网站支付的支付接口 <a target="_blank" rel="noopener" href="https://opendocs.alipay.com/open-v3/0e5a81?scene=22">alipay.trade.page.pay</a>（统一收单下单并支付页面接口）调用时序图如下：</p>
+<p><img src="https://gw.alipayobjects.com/os/skylark-tools/public/files/0ba3e82ad37ecf8649ee4219cfe9d16b.png%26originHeight%3D2023%26originWidth%3D2815%26size%3D526149%26status%3Ddone%26width%3D2815" alt="流程图"></p>
+<p><strong>调用流程如下</strong>：</p>
+<ol>
+<li>商家系统调用 <a target="_blank" rel="noopener" href="https://opendocs.alipay.com/open-v3/0e5a81?scene=22">alipay.trade.page.pay</a>（统一收单下单并支付页面接口）向支付宝发起支付请求，支付宝对商家请求参数进行校验，而后重新定向至用户登录页面。</li>
+<li>用户确认支付后，支付宝通过 get 请求 returnUrl（商户入参传入），返回同步返回参数。</li>
+<li>交易成功后，支付宝通过 post 请求 notifyUrl（商户入参传入），返回异步通知参数。</li>
+<li>若由于网络等原因，导致商家系统没有收到异步通知，商家可自行调用 <a target="_blank" rel="noopener" href="https://opendocs.alipay.com/open-v3/0e5a7y">alipay.trade.query</a>（统一收单交易查询接口）查询交易以及支付信息（商家也可以直接调用该查询接口，不需要依赖异步通知）。</li>
+</ol>
+<p><strong>注意</strong>： </p>
+<ul>
+<li>由于同步返回的不可靠性，支付结果必须以异步通知或查询接口返回为准，不能依赖同步跳转。</li>
+<li>商家系统接收到异步通知以后，必须通过验签（验证通知中的 sign 参数）来确保支付通知是由支付宝发送的。详细验签规则可查看 <a target="_blank" rel="noopener" href="https://opendocs.alipay.com/open-v3/05w3qh?pathHash=78bd7a2c#s7">异步通知验签</a>。</li>
+<li>接收到异步通知并验签通过后，请务必核对通知中的 app_id、out_trade_no、total_amount 等参数值是否与请求中的一致，并根据 trade_status 进行后续业务处理。</li>
+<li>在支付宝端，partnerId 与 out_trade_no 唯一对应一笔单据，商家端保证不同次支付 out_trade_no 不可重复；若重复，支付宝会关联到原单据，基本信息一致的情况下会以原单据为准进行支付。</li>
+</ul>
+<h4 id="调用示例"><a href="#调用示例" class="headerlink" title="调用示例"></a>调用示例</h4><p>开放平台提供了支持主流开发语言的 SDK 接入的方式。对于页面跳转类 API，SDK 不会也无法像系统调用类 API 一样自动请求支付宝并获得结果，而是在接受 request 请求对象后，为开发者生成前台页面请求需要的完整 form 表单的 html（包含自动提交脚本），商家直接将这个表单的 String 输出到 http response 中即可。</p>
+<p><strong>注意：</strong></p>
+<ul>
+<li>付款页面生成的付款码每 <strong>2 分钟</strong> 会自动刷新一次。</li>
+<li>电脑网站支付后使用 <a target="_blank" rel="noopener" href="https://opendocs.alipay.com/open-v3/repo-021o7g?ref=api_v3">商家分账</a> 完成分账，查询结果需使用 <a target="_blank" rel="noopener" href="https://opendocs.alipay.com/open-v3/0e5a7y">alipay.trade.query</a>（统一收单交易查询接口） <code>query_options</code> 传入 <code>trade_settle_info</code> 查询分账信息，不能使用 alipay.trade.order.settle.query（交易分账查询接口）查询。</li>
+</ul>
+<h4 id="示例代码："><a href="#示例代码：" class="headerlink" title="示例代码："></a>示例代码：</h4><p>文档中的代码很长，但是最关键的是代码没有展示如何设置<strong>return_url</strong>和<strong>notify_url</strong>两个参数，这就有点坑了，return_url是支付完成了跳转回原来系统的地址，notify_url是接收支持成功的异步通知的，我自己试了几次没成功，然后再支付宝社区找答案，于是：</p>
+<p><img src="/2024/12/25/%E6%94%AF%E4%BB%98%E5%AE%9DV3%E6%8E%A5%E5%8F%A3%E6%8E%A5%E5%85%A5/image-20241225163338921.png" alt="图1"></p>
+<p>也就是说<strong>return_url</strong>和<strong>notify_url</strong>都放在<strong>bizContent</strong>业务参数中，结果还是不对。。。。。。，后来找技术支持，说还是要和bizContent同级，也就是放在<strong>bizParams</strong>中，这真是，说虽然是V3接口，但是还是走的V2的逻辑，好吧。关键的代码如下：</p>
+<pre><code class="java"> ApiClient defaultClient = Configuration.getDefaultApiClient();
+ // 初始化alipay参数（全局设置一次）
+ defaultClient.setAlipayConfig(getAlipayConfig());
+ GenericExecuteApi api = new GenericExecuteApi();
+ // 构造请求参数以调用接口
+ Map&lt;String, Object&gt; bizParams = new HashMap&lt;&gt;();
+ Map&lt;String, Object&gt; bizContent = new HashMap&lt;&gt;();
+ // 设置商户订单号
+ bizContent.put("out_trade_no", String.valueOf(System.currentTimeMillis()));
+ // 设置订单总金额
+ bizContent.put("total_amount", "6.88");
+ // 设置订单标题
+ bizContent.put("subject", "测试电脑网站支付");
+ // 设置产品码
+ bizContent.put("product_code", "FAST_INSTANT_TRADE_PAY");
+ // 设置订单附加信息
+ bizContent.put("body", "谢谢谢谢");
+ // 设置PC扫码支付的方式
+ bizContent.put("qr_pay_mode", "2");
+ bizParams.put("biz_content", bizContent);
+ //return_url 必须是 http 或 https 开头的完整的 url 地址。
+ //return_url 地址后不可带自定义参数。
+ //设置 return_url 时不要进行转义、urlencode 等数据处理。
+ //当面付和APP支付不支持 return_url 参数，即使设置了也没有任何效果。
+ //同步通知参数只可参考，不能作为判断是否支付成功的依据。
+ bizParams.put("return_url", "https://docs.open.alipay.com");
+ bizParams.put("notify_url", "http://xxxxx/pay/pcNotify");
+ try {
+        System.out.println(JSON.serialize(bizParams));
+        // 如果是第三方代调用模式，请设置app_auth_token（应用授权令牌）
+        String pageRedirectionData = api.pageExecute("alipay.trade.page.pay", "POST", bizParams);
+        // 如果需要返回GET请求，请使用
+        // String pageRedirectionData = api.pageExecute("alipay.trade.page.pay", "GET", bizParams);
+        System.out.println(pageRedirectionData);
+        return pageRedirectionData;
+    } catch (ApiException e) {
+        System.out.println("调用失败");
+    }
+</code></pre>
+<p>电脑网站支付就可以了。</p>
+<h3 id="3-3-APP支付"><a href="#3-3-APP支付" class="headerlink" title="3.3 APP支付"></a>3.3 APP支付</h3><p>这个是最常见的了，在商家APP中集成支付宝SDK，然后支付。<a target="_blank" rel="noopener" href="https://opendocs.alipay.com/open-v3/05vuxe?pathHash=3444d649">产品介绍 - 支付宝文档中心</a>，后端调用app支付接口，返回订单的加密信息给前端，然后前端调用支付接口，完成支付。</p>
+<p>交互流程:</p>
+<p><img src="http://mdn.alipayobjects.com/afts/img/A*TKy2TKpVL3wAAAAAAAAAAAAAAa8wAA/original?bz=openpt_doc&amp;t=4msaCTXlxU0OKJWNkWsscvHbSGcA6jWukIuBa4lIU0UDAAAAZAAAMK8AAAAA" alt="p2"></p>
+<p>以下对重点步骤做简要说明：</p>
+<ul>
+<li>第 1 步用户在商户 App 客户端/小程序中购买商品下单。</li>
+<li>第 2 步商户订单信息由商户 App 客户端/小程序发送到服务端。</li>
+<li>第 3 步商家服务端调用 <a target="_blank" rel="noopener" href="https://opendocs.alipay.com/open-v3/429e4d75_alipay.trade.app.pay">alipay.trade.app.pay（app支付接口2.0接口）</a>通过支付宝服务端 SDK 获取 orderStr（orderStr 中包含了订单信息和签名）。</li>
+<li>第 4 步商家将 orderStr 发送给商户 App 客户端/小程序。</li>
+<li>第 5 步商家在客户端/小程序发起请求，将 orderStr 发送给支付宝。</li>
+<li>第 6 步进行支付预下单：支付宝客户端将会按照商家客户端提供的请求参数进行支付预下单。正常场景下，会唤起支付宝收银台等待用户核身；异常场景下，会返回异常信息。</li>
+<li>第 11 步返回商家 App/小程序：用户在支付宝 App 完成支付后，会跳转回商家页面，并返回最终的支付结果（即同步通知），可查看 <a target="_blank" rel="noopener" href="https://opendocs.alipay.com/open-v3/05vuxo">同步通知说明</a>。</li>
+<li>第 13 步支付结果异步通知，支付宝会根据步骤3 传入的异步通知地址 notify_url，发送异步通知，可查看 <a target="_blank" rel="noopener" href="https://opendocs.alipay.com/open-v3/05vuxp">异步通知说明</a>。</li>
+</ul>
+<p>除了正向支付流程外，支付宝也提供交易查询、关闭、退款、退款查询以及对账等配套 API。</p>
+<h4 id="示例代码：-1"><a href="#示例代码：-1" class="headerlink" title="示例代码："></a>示例代码：</h4><pre><code class="java"> ApiClient defaultClient = Configuration.getDefaultApiClient();
+ // 初始化alipay参数（全局设置一次）
+ defaultClient.setAlipayConfig(getAlipayConfig());
+
+ GenericExecuteApi api = new GenericExecuteApi();
+
+ // 构造请求参数以调用接口
+ Map&lt;String, Object&gt; bizParams = new HashMap&lt;&gt;();
+ Map&lt;String, Object&gt; bizContent = new HashMap&lt;&gt;();
+
+ // 设置商户订单号
+ bizContent.put("out_trade_no", "70501111111S001111119");
+
+ // 设置订单总金额
+ bizContent.put("total_amount", "9.00");
+
+ // 设置订单标题
+ bizContent.put("subject", "大乐透");
+
+ // 设置产品码
+ bizContent.put("product_code", "QUICK_MSECURITY_PAY");
+
+ // 设置订单附加信息
+ bizContent.put("body", "Iphone6 16G");
+
+ // 设置订单绝对超时时间
+ bizContent.put("time_expire", "2024-12-31 10:05:00");
+
+ // 设置建议使用time_expire字段
+ bizContent.put("timeout_express", "90m");
+ bizParams.put("biz_content", bizContent);
+ // 同步回调指定的页面 app不需要
+// bizParams.put("return_url", "https://docs.open.alipay.com");
+ bizParams.put("notify_url", "http://xxxxx/pay/appNotify");
+
+ try {
+     String orderStr = api.sdkExecute("alipay.trade.app.pay", bizParams);
+     System.out.println(orderStr);
+     return orderStr;
+ } catch (ApiException e) {
+     System.out.println("调用失败");
+ }
+</code></pre>
+<h3 id="3-4-手机网站支付"><a href="#3-4-手机网站支付" class="headerlink" title="3.4 手机网站支付"></a>3.4 手机网站支付</h3><p><a target="_blank" rel="noopener" href="https://opendocs.alipay.com/open-v3/05w4kp?pathHash=f3e513ea">产品介绍 - 支付宝文档中心</a>,手机网站支付是指商家在移动端网页展示商品或服务，用户在商家页面确认使用支付宝支付后，浏览器自动跳转支付宝 App 或支付宝网页完成付款的支付产品。该产品在签约完成后，需要技术集成方可使用。代码和电脑网站支付差不多。</p>
+<p>建议手机网站支付转Native支付，也就是唤起支付宝APP支付，而不是在H5页面进行支付。<a target="_blank" rel="noopener" href="https://opendocs.alipay.com/open-v3/05w4kw?pathHash=386b48c6">手机网站支付转Native支付（推荐） - 支付宝文档中心</a></p>
+<h4 id="流程图"><a href="#流程图" class="headerlink" title="流程图"></a>流程图</h4><p><img src="https://cdn.nlark.com/yuque/0/2022/png/179989/1668414529588-da8c06d7-41da-49b2-a967-00d05d01ff33.png" alt="p2"></p>
+<h4 id="对比总结"><a href="#对比总结" class="headerlink" title="对比总结"></a>对比总结</h4><p>手机网站支付与手机网站转 Native 支付的主要区别为：</p>
+<ul>
+<li>如果用户手机安装了支付宝客户端，手机网站转 Native 支付方式将跳转到支付宝客户端中进行订单支付，用户体验和支付成功率均优于手机网站支付方式。除此之外，还能使用手机网站支付没有提供的指纹支付、手环支付、手表支付、免密支付等功能。 </li>
+<li>如果用户手机没有安装支付宝客户端，将在 SDK 提供的 Web-view 中打开 H5 页面进行支付。即便如此，由于 SDK 与服务端的交互携带账号信息，仍比不携带任何账号信息的普通手机网站支付体验更好。</li>
+</ul>
+<h4 id="如何实现手机网站转Native支付"><a href="#如何实现手机网站转Native支付" class="headerlink" title="如何实现手机网站转Native支付"></a>如何实现手机网站转Native支付</h4><p>要实现上述功能需接入支付宝提供的 SDK。接入过程十分简单，可以以上述 Demo 为参考，该 Demo 程序只有一个功能：创建一个 Web-view，在 Web-view 中拦截每个 URL，然后调用 SDK 提供的接口检查该 URL 是否是有效的支付宝订单支付 URL，如果是则将该 URL 传给 SDK 提供的支付接口进行支付。</p>
+<h3 id="3-5-退款接口"><a href="#3-5-退款接口" class="headerlink" title="3.5 退款接口"></a>3.5 退款接口</h3><p>退款接口没啥好说的，主要是区分部分退款和全额退款交易状态的不同，参数传递的些许差异。<a target="_blank" rel="noopener" href="https://opendocs.alipay.com/open-v3/da960891_alipay.trade.refund?scene=common&amp;pathHash=f692c2c5">统一收单交易退款接口 - 支付宝文档中心</a>。先上代码：</p>
+<pre><code class="java">@GetMapping ("/refundPay")
+public String refundPay(String orderNo,String amount) throws ApiException {
+
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    // 初始化alipay参数（全局设置一次）
+    defaultClient.setAlipayConfig(getAlipayConfig());
+
+    // 构造请求参数以调用接口
+    AlipayTradeApi api = new AlipayTradeApi();
+    AlipayTradeRefundModel data = new AlipayTradeRefundModel();
+    // 部分退款时,outRequestNo必传,同一笔交易多次退款需要保证唯一
+    data.outRequestNo(String.valueOf(System.currentTimeMillis()));
+    data.setOutTradeNo(orderNo);
+    data.setRefundAmount(amount);
+    data.setRefundReason("测试退款");
+    // 第三方代调用模式下请设置app_auth_token
+    CustomizedParams params = new CustomizedParams();
+    params.setAppAuthToken("&lt;-- 请填写应用授权令牌 --&gt;");
+    try {
+        AlipayTradeRefundResponseModel response = api.refund(data);
+        //{"buyer_logon_id":"rpv***@sandbox.com","buyer_user_id":"2088722013720112","fund_change":"Y","gmt_refund_pay":"2024-12-19 14:16:39","out_trade_no":"1734423455786","refund_fee":"15.88","send_back_fee":"0.00","trade_no":"2024121722001420110504891744"}
+        System.out.println("调用成功:" + JSON.serialize(response));
+        return JSON.serialize(response);
+    } catch (ApiException e) {
+        AlipayTradeRefundDefaultResponse errorObject = (AlipayTradeRefundDefaultResponse) e.getErrorObject();
+        System.out.println("调用失败:" + errorObject);
+    }
+    return "";
+}
+</code></pre>
+<p>首先全额退款时，<strong>trade_no(支付宝交易号)<strong>和</strong>out_trade_no(商户订单号)<strong>二选一传入,<strong>refund_amount</strong>是必传的，退款成功后，交易状态变为：</strong>TRADE_CLOSED</strong>；</p>
+<p>部分退款时，参数在全额基础上，加了<strong>out_request_no</strong>退款请求号,必传。 标识一次退款请求，需要保证在交易号下唯一，如需部分退款，则此参数必传。 注：针对同一次退款请求，如果调用接口失败或异常了，重试时需要保证退款请求号不能变更，防止该笔交易重复退款。支付宝会保证同样的退款请求号多次请求只会退一次。部分退款成功后，交易状态仍为 <strong>TRADE_SUCCESS</strong>。</p>
+<p>APP、手机网站支付退款成功会触发异步通知，就是在调用pay接口时传入的notify_url，电脑网站只有部分退款时有通知（交易状态<strong>TRADE_SUCCESS</strong>）。但是不同的交易状态触发机制不同，后面会详说。退款是否成功建议还是调用<a target="_blank" rel="noopener" href="https://opendocs.alipay.com/open-v3/b95db51d_alipay.trade.fastpay.refund.query?scene=common&amp;pathHash=013d131b">统一收单交易退款查询接口 - 支付宝文档中心</a>来确认，异步通知虽然也可以，但是判断条件有点复杂，而且会和支付成功时的通知业务耦合在一起，还要判断是全额退款和部分退款，所以，异步通知接口只用来接收支付成功的消息比较好，退款可以根据退款接口返回的字段<strong>fund_change=Y</strong>判断，再结合退款查询接口。</p>
+<h4 id="退款说明"><a href="#退款说明" class="headerlink" title="退款说明"></a>退款说明</h4><ul>
+<li><strong>退款周期：</strong>12 个月，即交易发生后 12 个月内可发起退款，超过 12 个月则不可发起退款。</li>
+<li><strong>退款方式：</strong>资金原路返回用户账号。</li>
+<li><strong>退款退费：</strong>退款时手续费不退回。</li>
+<li>一笔退款失败后重新提交，要采用原来的退款单号。</li>
+<li>总退款金额不能超过用户实际支付金额。</li>
+<li>退款信息以退款接口同步返回或者 <a target="_blank" rel="noopener" href="https://opendocs.alipay.com/open-v3/0e5a7x">alipay.trade.fastpay.refund.query</a>（统一收单交易退款查询接口）为准。</li>
+</ul>
+<p>退款存在退到银行卡场景下时，开发者需要先订阅 <a target="_blank" rel="noopener" href="https://opendocs.alipay.com/open-v3/05w4la?pathHash=da33cafe&amp;scene=common">alipay.trade.refund.depositback.completed</a>（收单退款冲退完成通知）如果是使用 <a target="_blank" rel="noopener" href="https://opendocs.alipay.com/open-v3/064zh9?pathHash=a9c7a1f2">From 蚂蚁消息服务</a> 需要先设置好应用网关地址，支付宝会根据银行回执消息发送退款完成信息至应用网关地址。具体消息订阅步骤可查看 <a target="_blank" rel="noopener" href="https://opendocs.alipay.com/open-v3/064zh9?pathHash=a9c7a1f2#%E8%AE%A2%E9%98%85%E6%B6%88%E6%81%AF">订阅消息</a>。</p>
+<h3 id="3-6-订单查询接口"><a href="#3-6-订单查询接口" class="headerlink" title="3.6 订单查询接口"></a>3.6 订单查询接口</h3><p><a target="_blank" rel="noopener" href="https://opendocs.alipay.com/open-v3/cd439c70_alipay.trade.query?scene=23&amp;pathHash=525a8e13">统一收单交易查询接口 - 支付宝文档中心</a>,直接查就可以了。</p>
+<h3 id="3-7-交易关闭接口"><a href="#3-7-交易关闭接口" class="headerlink" title="3.7 交易关闭接口"></a>3.7 交易关闭接口</h3><p>通常交易关闭是通过 alipay.trade.page.pay 中的超时时间来控制，支付宝也提供给商家 <a target="_blank" rel="noopener" href="https://opendocs.alipay.com/open-v3/0e5a80">alipay.trade.close</a>（统一收单交易关闭接口）。若用户一直未支付，商家可以调用该接口关闭指定交易；成功关闭交易后该交易不可支付。</p>
+<h3 id="3-8-异步通知接口"><a href="#3-8-异步通知接口" class="headerlink" title="3.8 异步通知接口"></a>3.8 异步通知接口</h3><p>支付成功和退款成功都会触发异步通知，建议只处理支付成功的通知，这样的话电脑网站支付和app支付可以用同一个notify_url，同一个接口，如果处理退款的通知，电脑网站支付和app支付触发条件不一样，判断条件也不一样，会有一些复杂的场景，比如：部分退款时，最后一笔退款会改变交易状态为TRADE_CLOSED，而没有退完时，状态仍是TRADE_SUCCESS，需要各种条件判断，所以退款还是调用退款查询接口比较好，建议在退款后10s后调用，可以用MQ延时消息处理。</p>
+<p>我写了两个异步通知方法，简单判断了通知类型，但是肯定没有包含所有情况。代码如下：</p>
+<pre><code class="java">@PostMapping("/pcNotify")
+public String notifyPay(HttpServletRequest request) throws ApiException {
+    System.out.println("电脑网站收到异步通知=====支付宝回调");
+    Map&lt;String, String&gt; params = new HashMap&lt;&gt;();
+    Map&lt;String, String[]&gt; requestParams = request.getParameterMap();
+    for (Iterator&lt;String&gt; iter = requestParams.keySet().iterator(); iter.hasNext(); ) {
+        String name = iter.next();
+        String[] values = requestParams.get(name);
+        String valueStr = "";
+        for (int i = 0; i &lt; values.length; i++) {
+            valueStr = (i == values.length - 1) ? valueStr + values[i] : valueStr + values[i] + ",";
+        }
+        params.put(name, valueStr);
+    }
+    //{"gmt_create":"2024-12-19 14:04:16","charset":"UTF-8","gmt_payment":"2024-12-19 14:04:31","notify_time":"2024-12-19 14:04:33","subject":"测试电脑网站支付","sign":"XAzGwc/dZ6ON1TwXvw92GnhF7X4PTZNJ6h6TfH/5T0sgfTtIRVgnny150B7Ip1xHgjpuNoz+T8XlMpMNgvkpxNlcWmlbDfs72Ls/OyyV7ttEKgRos4VWKIrojJ1Apy06H9kie6cCfmBC3mmW9Gh+QAh5oejdZDSq+NDgJIjBlz8S6x85GEQ0BprcVHDfPKubaOWl5nCri7YKxTPOLZcqwTgV9mWXzoIa9hSp32bqyTiLtDlM1h5Z7IJKuj9/EhKuOAz6PF/vws/lftp9gzG3bJVkwwP4z50neyJNWzENIHIKQoGDInZF+T2yNyJJ0YPg/x8LejPzyfdkHjM9bZjBEA\u003d\u003d","buyer_id":"2088722013720112","invoice_amount":"6.88","version":"1.0","notify_id":"2024121901222140432120110505059148","fund_bill_list":"[{\"amount\":\"6.88\",\"fundChannel\":\"ALIPAYACCOUNT\"}]","notify_type":"trade_status_sync","out_trade_no":"1734588234593","total_amount":"6.88","trade_status":"TRADE_SUCCESS","trade_no":"2024121922001420110504898164","auth_app_id":"9021000128652691","receipt_amount":"6.88","point_amount":"0.00","buyer_pay_amount":"6.88","app_id":"9021000128652691","sign_type":"RSA2","seller_id":"2088721013742803"}
+    System.out.println(JSON.serialize(params));
+    // SHA256WithRSA（对应 sign_type 为 RSA2）或 SHA1WithRSA（对应 sign_type 为 RSA）
+    boolean verified = AlipaySignature.verifyV1(params, getAlipayConfig().getAlipayPublicKey(), "UTF-8", "RSA2");
+    if (verified) {
+        //todo 参数验证，out_trade_no，total_amount等
+        //1. 商家需要验证该通知数据中的 out_trade_no 是否为商家系统中创建的订单号。
+        //2. 判断 total_amount 是否确实为该订单的实际金额（即商家订单创建时的金额）。
+        //3. 校验通知中的 seller_id（或者 seller_email ) 是否为 out_trade_no 这笔单据的对应的操作方（有的时候，一个商家可能有多个seller_id/seller_email）。
+        //4. 验证 app_id 是否为该商家本身。
+        System.out.println("支付异步验签成功");
+        String tradeStatus = params.get("trade_status");
+        //总退款金额
+        String refundFee = params.get("refund_fee");
+        //交易退款时间
+        String gmtRefund = params.get("gmt_refund");
+        if (StringUtils.isEmpty(refundFee) &amp;&amp; StringUtils.isEmpty(gmtRefund)){
+            //只有交易通知状态为 TRADE_SUCCESS 或 TRADE_FINISHED 时，支付宝才会认定为买家付款成功。
+            if ("TRADE_SUCCESS".equals(tradeStatus) || "TRADE_FINISHED".equals(tradeStatus)) {
+                System.out.println("支付成功异步通知");
+            }
+        }else {
+            System.out.println("退款异步通知");
+            String gmtClose = params.get("gmt_close");
+            if ("TRADE_SUCCESS".equals(tradeStatus)) {
+                //最后一次部分退款没有通知，因为状态已经变成TRADE_CLOSED
+                System.out.println("部分退款异步通知");
+            }
+            //电脑网站支付应该不会有全额退款通知，因为TRADE_CLOSED不会触发异步通知
+            if ("TRADE_CLOSED".equals(tradeStatus) &amp;&amp; StringUtils.isNotEmpty(gmtClose)){
+                System.out.println("全额退款异步通知");
+            }
+        }
+        return "success";
+    }else {
+        System.out.println("验签失败，支付失败");
+        return "failure";
+    }
+
+}
+
+@PostMapping("/appNotify")
+public String notifyAppPay(HttpServletRequest request) throws ApiException {
+    System.out.println("app收到异步通知=====支付宝回调");
+    Map&lt;String, String&gt; params = new HashMap&lt;&gt;();
+    Map&lt;String, String[]&gt; requestParams = request.getParameterMap();
+    for (Iterator&lt;String&gt; iter = requestParams.keySet().iterator(); iter.hasNext(); ) {
+        String name = iter.next();
+        String[] values = requestParams.get(name);
+        String valueStr = "";
+        for (int i = 0; i &lt; values.length; i++) {
+            valueStr = (i == values.length - 1) ? valueStr + values[i] : valueStr + values[i] + ",";
+        }
+        params.put(name, valueStr);
+    }
+    System.out.println(JSON.serialize(params));
+    // SHA256WithRSA（对应 sign_type 为 RSA2）或 SHA1WithRSA（对应 sign_type 为 RSA）
+    boolean verified = AlipaySignature.verifyV1(params, getAlipayConfig().getAlipayPublicKey(), "UTF-8", "RSA2");
+    if (verified) {
+        System.out.println("支付异步验签成功");
+        String tradeStatus = params.get("trade_status");
+        //总退款金额
+        String refundFee = params.get("refund_fee");
+        //交易退款时间
+        String gmtRefund = params.get("gmt_refund");
+
+        if (StringUtils.isEmpty(refundFee) &amp;&amp; StringUtils.isEmpty(gmtRefund)){
+            if ("TRADE_SUCCESS".equals(tradeStatus)) {
+                System.out.println("支付成功异步通知");
+            }
+            if ("TRADE_CLOSED".equals(tradeStatus)) {
+                System.out.println("交易关闭异步通知");
+            }
+            if ("TRADE_FINISHED".equals(tradeStatus)) {
+                System.out.println("交易关闭异步通知");
+            }
+        }else {
+            System.out.println("退款异步通知");
+            String gmtClose = params.get("gmt_close");
+            if ("TRADE_SUCCESS".equals(tradeStatus)) {
+                System.out.println("部分退款异步通知");
+            }
+            //全额退款，或者最后一次部分退款
+            if ("TRADE_CLOSED".equals(tradeStatus) &amp;&amp; StringUtils.isNotEmpty(gmtClose)){
+                System.out.println("全额退款异步通知");
+            }
+        }
+        return "success";
+    }else {
+        System.out.println("支付异步验签失败，支付失败");
+        return "failure";
+    }
+
+}
+</code></pre>
+<h3 id="3-9-一些要注意的信息"><a href="#3-9-一些要注意的信息" class="headerlink" title="3.9 一些要注意的信息"></a>3.9 一些要注意的信息</h3><h4 id="交易状态流程"><a href="#交易状态流程" class="headerlink" title="交易状态流程"></a>交易状态流程</h4><p><img src="https://cdn.nlark.com/yuque/0/2022/png/179989/1662454282907-29e733cb-88ce-443a-b045-47ffef16ab67.png" alt="p3"></p>
+<p>随着订单支付成功、退款、关闭等操作，订单交易的每一个环节 trade_status（交易状态）也不同。</p>
+<ol>
+<li>交易创建成功后，用户支付成功，交易状态转为 <strong>TRADE_SUCCESS（交易成功）</strong>。</li>
+<li>交易成功后，规定退款时间内没有退款，交易状态转为 <strong>TRADE_FINISHED（交易完成）</strong>。</li>
+<li>交易支付成功后，交易部分退款，交易状态仍为 <strong>TRADE_SUCCESS（交易成功）</strong>。</li>
+<li>交易成功后，交易全额退款，交易状态转为 <strong>TRADE_CLOSED（交易关闭）</strong>。</li>
+<li>交易创建成功后，用户未付款交易超时关闭，交易状态转为 <strong>TRADE_CLOSED（交易关闭）</strong>。</li>
+<li>交易创建成功后，用户支付成功后，若用户商品不支持退款，交易状态直接转为 <strong>TRADE_FINISHED（交易完成）</strong>。</li>
+</ol>
+<p><strong>注意</strong>：交易成功后部分退款，交易状态仍为 TRADE_SUCCESS（交易成功）。</p>
+<p>如果一直部分退款退完所有交易金额则交易状态转为 TRADE_CLOSED（交易关闭）。</p>
+<p>如果未退完所有交易金额，超过有效退款时间后交易状态转为 TRADE_FINISHED（交易完成）不可退款。</p>
+<h4 id="异步通知："><a href="#异步通知：" class="headerlink" title="异步通知："></a>异步通知：</h4><p>先上代码：</p>
+<pre><code class="java">@PostMapping("/appNotify")
+public String notifyAppPay(HttpServletRequest request) throws ApiException {
+    System.out.println("app收到异步通知=====支付宝回调");
+    Map&lt;String, String&gt; params = new HashMap&lt;&gt;();
+    Map&lt;String, String[]&gt; requestParams = request.getParameterMap();
+    for (Iterator&lt;String&gt; iter = requestParams.keySet().iterator(); iter.hasNext(); ) {
+        String name = iter.next();
+        String[] values = requestParams.get(name);
+        String valueStr = "";
+        for (int i = 0; i &lt; values.length; i++) {
+            valueStr = (i == values.length - 1) ? valueStr + values[i] : valueStr + values[i] + ",";
+        }
+        params.put(name, valueStr);
+    }
+    System.out.println(JSON.serialize(params));
+    // SHA256WithRSA（对应 sign_type 为 RSA2）或 SHA1WithRSA（对应 sign_type 为 RSA）
+    boolean verified = AlipaySignature.verifyV1(params, getAlipayConfig().getAlipayPublicKey(), "UTF-8", "RSA2");
+    if (verified) {
+        System.out.println("支付异步验签成功");
+        String tradeStatus = params.get("trade_status");
+        //总退款金额
+        String refundFee = params.get("refund_fee");
+        //交易退款时间
+        String gmtRefund = params.get("gmt_refund");
+
+        if (StringUtils.isEmpty(refundFee) &amp;&amp; StringUtils.isEmpty(gmtRefund)){
+            if ("TRADE_SUCCESS".equals(tradeStatus)) {
+                System.out.println("支付成功异步通知");
+            }
+            if ("TRADE_CLOSED".equals(tradeStatus)) {
+                System.out.println("交易关闭异步通知");
+            }
+            if ("TRADE_FINISHED".equals(tradeStatus)) {
+                System.out.println("交易关闭异步通知");
+            }
+        }else {
+            System.out.println("退款异步通知");
+            String gmtClose = params.get("gmt_close");
+            if ("TRADE_SUCCESS".equals(tradeStatus)) {
+                System.out.println("部分退款异步通知");
+            }
+            //全额退款，或者最后一次部分退款
+            if ("TRADE_CLOSED".equals(tradeStatus) &amp;&amp; StringUtils.isNotEmpty(gmtClose)){
+                System.out.println("全额退款异步通知");
+            }
+        }
+        return "success";
+    }else {
+        System.out.println("支付异步验签失败，支付失败");
+        return "failure";
+    }
+
+}
+</code></pre>
+<p>交易退款接口触发异步通知:<a target="_blank" rel="noopener" href="https://opendocs.alipay.com/open-v3/05w4kp?pathHash=f3e513ea">产品介绍 - 支付宝文档中心</a>，前面已经说了，退款不建议在异步通知中处理，可以调用退款查询接口来判断，</p>
+<p><a target="_blank" rel="noopener" href="https://opendocs.alipay.com/support/01rawa">如何判断退款是否成功 - 支付宝文档中心</a>。</p>
+<p>这里的交易退款接口是指统一收单交易退款接口（<a target="_blank" rel="noopener" href="https://docs.open.alipay.com/api_1/alipay.trade.refund">alipay.trade.refund</a>），统一收单交易退款接口本身接口不支持设置 notify_url 参数，因此退款导致触发的异步通知是发送到支付接口中设置的 notify_url。</p>
+<p>历史版本的退款接口 refund_fastpay_by_platform_pwd（即时到账有密退款接口）不同于新版本的统一收单交易退款接口（alipay.trade.refund）。历史版本的退款接口本身支持设置 notify_url，但由于历史接口目前不支持签约，无法使用等情况，本文只阐述新版本的统一收单交易退款接口（alipay.trade.refund）是否会触发异步通知。</p>
+<p>以下是交易状态说明：</p>
+<p><img src="https://gw.alipayobjects.com/zos/workflow/workflow/202002261582698731390_3381f68343d8db05198d25bbf1eb6049.png" alt="img"></p>
+<h4 id="触发异步通知条件"><a href="#触发异步通知条件" class="headerlink" title="触发异步通知条件"></a>触发异步通知条件</h4><p>异步通知是根据交易状态的改变进行触发的，不同的支付产品触发异步通知的条件不同。</p>
+<table>
+<thead>
+<tr>
+<th>产品</th>
+<th>触发异步通知条件</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>当面付</td>
+<td>当面付的支付接口，详见 <a target="_blank" rel="noopener" href="https://docs.open.alipay.com/194/103296/#s1">当面付异步通知-仅用于扫码支付</a>默认 TRADE_SUCCESS（交易成功）触发。TRADE_CLOSED（交易关闭）、TRADE_FINISHED（交易完成）、WAIT_BUYER_PAY（交易创建）不触发异步通知。</td>
+</tr>
+<tr>
+<td>App 支付</td>
+<td>App 支付接口，详见 <a target="_blank" rel="noopener" href="https://docs.open.alipay.com/204/105301/#s2">App 支付异步通知触发条件</a>默认 TRADE_SUCCESS（交易成功）、TRADE_CLOSED（交易关闭）、TRADE_FINISHED（交易完成）三种状态均会触发异步通知。WAIT_BUYER_PAY（交易创建）不触发异步通知。</td>
+</tr>
+<tr>
+<td>手机网站支付</td>
+<td>手机网站支付接口，详见<a target="_blank" rel="noopener" href="https://docs.open.alipay.com/203/105286/#s2">手机网站支付结果异步通知触发条件</a>默认 TRADE_SUCCESS（交易成功）、TRADE_CLOSED（交易关闭）、TRADE_FINISHED（交易完成）三种状态均会触发异步通知。WAIT_BUYER_PAY（交易创建）不触发异步通知。</td>
+</tr>
+<tr>
+<td>电脑网站支付</td>
+<td>电脑网站支付接口，详见<a target="_blank" rel="noopener" href="https://docs.open.alipay.com/270/105902/#s2">电脑网站支付异步通知触发条件</a>默认 TRADE_SUCCESS（交易成功）状态触发异步通知。TRADE_CLOSED（交易关闭）、TRADE_FINISHED（交易完成）、WAIT_BUYER_PAY（交易创建）不触发异步通知。</td>
+</tr>
+</tbody></table>
+<h4 id="退款是否会收到异步"><a href="#退款是否会收到异步" class="headerlink" title="退款是否会收到异步"></a>退款是否会收到异步</h4><p>根据退款的行为可分为全额退款和部分退款。</p>
+<ul>
+<li>全额退款，交易状态变为 TRADE_CLOSED（交易关闭）。只有 App 支付和手机网站支付交易状态变为 TRADE_CLOSED（交易关闭）会触发异步通知。</li>
+<li>部分退款，交易状态仍为 TRADE_SUCCESS（交易成功）。当面付、电脑网站支付、App 支付和手机网站支付交易状态为 TRADE_SUCCESS（交易成功）都会触发异步通知。</li>
+</ul>
+<h4 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h4><p>由于不同操作导致不同的交易状态，异步通知对交易状态的常见问题如下。</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://opendocs.alipay.com/support/01rawd">异步通知如何区分全额退款和部分退款</a></li>
+<li><a target="_blank" rel="noopener" href="https://opendocs.alipay.com/support/01rawe">异步通知如何区分全额退款和订单超时导致的交易关闭</a></li>
+<li><a target="_blank" rel="noopener" href="https://opendocs.alipay.com/support/01rawf">异步通知如何判断对应哪笔退款交易</a></li>
+</ul>
+<h4 id="关于异步通知的验签"><a href="#关于异步通知的验签" class="headerlink" title="关于异步通知的验签"></a>关于异步通知的验签</h4><p>收到异步通知后需要先验签，V3的SDK提供的验签方法与V2相比，换了方法。</p>
+<pre><code class="java">// SHA256WithRSA（对应 sign_type 为 RSA2）或 SHA1WithRSA（对应 sign_type 为 RSA）
+  boolean verified = AlipaySignature.verifyV1(params, getAlipayConfig().getAlipayPublicKey(), "UTF-8", "RSA2");
+</code></pre>
+<p>当然也可以自定义方法验签。</p>
+<h3 id="4、完整代码：只是测试代码，接口都是get请求，正式接入还需完善。"><a href="#4、完整代码：只是测试代码，接口都是get请求，正式接入还需完善。" class="headerlink" title="4、完整代码：只是测试代码，接口都是get请求，正式接入还需完善。"></a>4、完整代码：只是测试代码，接口都是get请求，正式接入还需完善。</h3><pre><code class="java">package com.zqg.pay.alipay.web;
+
+import com.alipay.v3.ApiClient;
+import com.alipay.v3.ApiException;
+import com.alipay.v3.Configuration;
+import com.alipay.v3.JSON;
+import com.alipay.v3.api.AlipayTradeApi;
+import com.alipay.v3.api.AlipayTradeFastpayRefundApi;
+import com.alipay.v3.model.*;
+import com.alipay.v3.util.AlipaySignature;
+import com.alipay.v3.util.GenericExecuteApi;
+import com.alipay.v3.util.model.AlipayConfig;
+import com.alipay.v3.util.model.CustomizedParams;
+import org.apache.commons.lang3.StringUtils;
+import org.springframework.web.bind.annotation.*;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.util.*;
+
+@RestController
+@RequestMapping("/pay")
+public class PayController {
+
+    /**
+     * https://opendocs.alipay.com/open-v3/2423fad5_alipay.trade.page.pay?scene=22&amp;pathHash=b20c762a
+     *
+     * @param response
+     * @return String
+     * @throws ApiException
+     * @throws IOException
+     */
+    @GetMapping(value = "/payOrder",produces = "text/html;charset=UTF-8")
+    public String pay(HttpServletResponse response) throws ApiException, IOException {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        // 初始化alipay参数（全局设置一次）
+        defaultClient.setAlipayConfig(getAlipayConfig());
+
+        GenericExecuteApi api = new GenericExecuteApi();
+
+        // 构造请求参数以调用接口
+        Map&lt;String, Object&gt; bizParams = new HashMap&lt;&gt;();
+        Map&lt;String, Object&gt; bizContent = new HashMap&lt;&gt;();
+
+        // 设置商户订单号
+        bizContent.put("out_trade_no", String.valueOf(System.currentTimeMillis()));
+
+        // 设置订单总金额
+        bizContent.put("total_amount", "6.88");
+
+        // 设置订单标题
+        bizContent.put("subject", "测试电脑网站支付");
+
+        // 设置产品码
+        bizContent.put("product_code", "FAST_INSTANT_TRADE_PAY");
+
+        // 设置订单附加信息
+       // bizContent.put("body", "http://localhost:8080/hello");
+
+        // 设置PC扫码支付的方式
+        bizContent.put("qr_pay_mode", "2");
+
+        // 设置商户自定义二维码宽度
+        //bizContent.put("qrcode_width", 100);
+
+        // 设置订单包含的商品列表信息
+        List&lt;Map&lt;String, Object&gt;&gt; goodsDetail = new ArrayList&lt;&gt;();
+        Map&lt;String, Object&gt; goodsDetail0 = new HashMap&lt;&gt;();
+        goodsDetail0.put("out_sku_id", "outSku_01");
+        goodsDetail0.put("goods_name", "ipad");
+        goodsDetail0.put("alipay_goods_id", "20010001");
+        goodsDetail0.put("quantity", 1);
+        goodsDetail0.put("price", 2000);
+        goodsDetail0.put("out_item_id", "outItem_01");
+        goodsDetail0.put("goods_id", "apple-01");
+        goodsDetail0.put("goods_category", "34543238");
+        goodsDetail0.put("categories_tree", "124868003|126232002|126252004");
+        goodsDetail0.put("show_url", "http://www.alipay.com/xxx.jpg");
+        goodsDetail.add(goodsDetail0);
+        //bizContent.put("goods_detail", goodsDetail);
+
+        // 设置订单绝对超时时间
+      //  bizContent.put("time_expire", "2024-12-31 10:05:01");
+
+        // 设置建议使用time_expire字段
+      //  bizContent.put("timeout_express", "90m");
+
+        // 设置描述分账信息
+        Map&lt;String, Object&gt; royaltyInfo = new HashMap&lt;&gt;();
+        royaltyInfo.put("royalty_type", "ROYALTY");
+        List&lt;Map&lt;String, Object&gt;&gt; royaltyDetailInfos = new ArrayList&lt;&gt;();
+        Map&lt;String, Object&gt; royaltyDetailInfos0 = new HashMap&lt;&gt;();
+        royaltyDetailInfos0.put("out_relation_id", "20131124001");
+        royaltyDetailInfos0.put("amount_percentage", "100");
+        royaltyDetailInfos0.put("amount", "0.1");
+        royaltyDetailInfos0.put("batch_no", "123");
+        royaltyDetailInfos0.put("trans_in", "2088101126708402");
+        royaltyDetailInfos0.put("trans_out_type", "userId");
+        royaltyDetailInfos0.put("trans_out", "2088101126765726");
+        royaltyDetailInfos0.put("serial_no", 1);
+        royaltyDetailInfos0.put("trans_in_type", "userId");
+        royaltyDetailInfos0.put("desc", "分账测试1");
+        royaltyDetailInfos.add(royaltyDetailInfos0);
+        royaltyInfo.put("royalty_detail_infos", royaltyDetailInfos);
+       // bizContent.put("royalty_info", royaltyInfo);
+
+        // 设置二级商户信息
+        Map&lt;String, Object&gt; subMerchantvxgvh = new HashMap&lt;&gt;();
+        subMerchantvxgvh.put("merchant_id", "2088000603999128");
+        subMerchantvxgvh.put("merchant_type", "alipay");
+        //bizContent.put("sub_merchant", subMerchantvxgvh);
+
+        // 设置描述结算信息
+        Map&lt;String, Object&gt; settleInfo = new HashMap&lt;&gt;();
+        settleInfo.put("settle_period_time", "7d");
+        List&lt;Map&lt;String, Object&gt;&gt; settleDetailInfos = new ArrayList&lt;&gt;();
+        Map&lt;String, Object&gt; settleDetailInfos0 = new HashMap&lt;&gt;();
+        settleDetailInfos0.put("amount", "0.1");
+        settleDetailInfos0.put("trans_in", "A0001");
+        settleDetailInfos0.put("settle_entity_type", "SecondMerchant");
+        settleDetailInfos0.put("summary_dimension", "A0001");
+        settleDetailInfos0.put("actual_amount", "0.1");
+        settleDetailInfos0.put("settle_entity_id", "2088xxxxx;ST_0001");
+        settleDetailInfos0.put("trans_in_type", "cardAliasNo");
+        settleDetailInfos.add(settleDetailInfos0);
+        settleInfo.put("settle_detail_infos", settleDetailInfos);
+       // bizContent.put("settle_info", settleInfo);
+
+        // 设置业务扩展参数
+        Map&lt;String, Object&gt; extendParams = new HashMap&lt;&gt;();
+        extendParams.put("sys_service_provider_id", "2088511833207846");
+        extendParams.put("hb_fq_seller_percent", "100");
+        extendParams.put("hb_fq_num", "3");
+        extendParams.put("tc_installment_order_id", "2015042321001004720200028594");
+        extendParams.put("industry_reflux_info", "{\"scene_code\":\"metro_tradeorder\",\"channel\":\"xxxx\",\"scene_data\":{\"asset_name\":\"ALIPAY\"}}");
+        extendParams.put("specified_seller_name", "XXX的跨境小铺");
+        extendParams.put("royalty_freeze", "true");
+        extendParams.put("card_type", "S0JP0000");
+        extendParams.put("credit_ext_info", "{\"category\":\"CHARGE_PILE_CAR\",\"serviceId\":\"2020042800000000000001450466\"}");
+        extendParams.put("trade_component_order_id", "2023060801502300000008810000005657");
+       // bizContent.put("extend_params", extendParams);
+
+        // 设置商户传入业务信息
+       // bizContent.put("business_params", "{\"mc_create_trade_ip\":\"127.0.0.1\"}");
+
+        // 设置优惠参数
+      //  bizContent.put("promo_params", "{\"storeIdType\":\"1\"}");
+
+        // 设置请求后页面的集成方式
+      //  bizContent.put("integration_type", "PCWEB");
+
+        // 设置请求来源地址
+       // bizContent.put("request_from_url", "https://");
+
+        // 设置签约参数
+        Map&lt;String, Object&gt; agreementSignParams = new HashMap&lt;&gt;();
+        Map&lt;String, Object&gt; subMerchantRWfdn = new HashMap&lt;&gt;();
+        subMerchantRWfdn.put("sub_merchant_name", "滴滴出行");
+        subMerchantRWfdn.put("sub_merchant_service_name", "滴滴出行免密支付");
+        subMerchantRWfdn.put("sub_merchant_service_description", "免密付车费，单次最高500");
+        subMerchantRWfdn.put("sub_merchant_id", "2088123412341234");
+        agreementSignParams.put("sub_merchant", subMerchantRWfdn);
+        agreementSignParams.put("buckle_app_id", "1001164");
+        agreementSignParams.put("sign_validity_period", "2m");
+        agreementSignParams.put("buckle_merchant_id", "268820000000414397785");
+        agreementSignParams.put("external_logon_id", "138****8888");
+        agreementSignParams.put("third_party_type", "PARTNER");
+        agreementSignParams.put("personal_product_code", "GENERAL_WITHHOLDING_P");
+        agreementSignParams.put("external_agreement_no", "test");
+        agreementSignParams.put("promo_params", "{\"key\",\"value\"}");
+        agreementSignParams.put("sign_scene", "INDUSTRY|CARRENTAL");
+      //  bizContent.put("agreement_sign_params", agreementSignParams);
+
+        // 设置商户门店编号
+      //  bizContent.put("store_id", "NJ_001");
+
+        // 设置指定支付渠道
+       // bizContent.put("enable_pay_channels", "pcredit,moneyFund,debitCardExpress");
+
+        // 设置禁用渠道
+      //  bizContent.put("disable_pay_channels", "pcredit,moneyFund,debitCardExpress");
+
+        // 设置商户的原始订单号
+      //  bizContent.put("merchant_order_no", "20161008001");
+
+        // 设置外部指定买家
+        Map&lt;String, Object&gt; extUserInfo = new HashMap&lt;&gt;();
+        extUserInfo.put("cert_type", "IDENTITY_CARD");
+        extUserInfo.put("cert_no", "362334768769238881");
+        extUserInfo.put("name", "李明");
+        extUserInfo.put("mobile", "16587658765");
+        extUserInfo.put("min_age", "18");
+        extUserInfo.put("need_check_info", "F");
+        extUserInfo.put("identity_hash", "27bfcd1dee4f22c8fe8a2374af9b660419d1361b1c207e9b41a754a113f38fcc");
+       // bizContent.put("ext_user_info", extUserInfo);
+
+        // 设置开票信息
+        Map&lt;String, Object&gt; invoiceInfo = new HashMap&lt;&gt;();
+        Map&lt;String, Object&gt; keyInfo = new HashMap&lt;&gt;();
+        keyInfo.put("tax_num", "1464888883494");
+        keyInfo.put("is_support_invoice", true);
+        keyInfo.put("invoice_merchant_name", "ABC|003");
+        invoiceInfo.put("key_info", keyInfo);
+        invoiceInfo.put("details", "[{\"code\":\"100294400\",\"name\":\"服饰\",\"num\":\"2\",\"sumPrice\":\"200.00\",\"taxRate\":\"6%\"}]");
+       // bizContent.put("invoice_info", invoiceInfo);
+
+        // 设置返回参数选项
+        List&lt;String&gt; queryOptions = new ArrayList&lt;&gt;();
+        queryOptions.add("hyb_amount");
+        queryOptions.add("enterprise_pay_info");
+       // bizContent.put("query_options", queryOptions);
+
+        bizParams.put("biz_content", bizContent);
+        //return_url 必须是 http 或 https 开头的完整的 url 地址。
+        //return_url 地址后不可带自定义参数。
+        //设置 return_url 时不要进行转义、urlencode 等数据处理。
+        //当面付和APP支付不支持 return_url 参数，即使设置了也没有任何效果。
+        //同步通知参数只可参考，不能作为判断是否支付成功的依据。
+        bizParams.put("return_url", "https://docs.open.alipay.com");
+        bizParams.put("notify_url", "http://lql5520.yunmv.cn/pay/pcNotify");
+
+        try {
+            //rpvexb4275@sandbox.com
+            System.out.println(JSON.serialize(bizParams));
+            System.out.println("==============================");
+            // 如果是第三方代调用模式，请设置app_auth_token（应用授权令牌）
+            String pageRedirectionData = api.pageExecute("alipay.trade.page.pay", "POST", bizParams);
+            // 如果需要返回GET请求，请使用
+            // String pageRedirectionData = api.pageExecute("alipay.trade.page.pay", "GET", bizParams);
+            System.out.println(pageRedirectionData);
+            return pageRedirectionData;
+         /*  //produces = "text/html"
+            response.setContentType("text/html;charset=UTF-8");
+            PrintWriter out = response.getWriter();
+            out.write(pageRedirectionData);
+            out.flush();
+            out.close();
+            */
+        } catch (ApiException e) {
+            System.out.println("调用失败");
+        }
+        return "";
+    }
+
+
+    /**
+     * https://opendocs.alipay.com/support/01rawc?pathHash=4ad70fe3
+     * App 支付   App 支付接口，详见 App 支付异步通知触发条件
+     * 默认 TRADE_SUCCESS（交易成功）、TRADE_CLOSED（交易关闭）、TRADE_FINISHED（交易完成）三种状态均会触发异步通知。
+     * WAIT_BUYER_PAY（交易创建）不触发异步通知。
+     *
+     * 电脑网站支付   电脑网站支付接口，详见电脑网站支付异步通知触发条件
+     * 默认 TRADE_SUCCESS（交易成功）状态触发异步通知。
+     * TRADE_CLOSED（交易关闭）、TRADE_FINISHED（交易完成）、WAIT_BUYER_PAY（交易创建）不触发异步通知。
+     *
+     * 退款是否会收到异步
+     * 根据退款的行为可分为全额退款和部分退款。
+     * ● 全额退款，交易状态变为 TRADE_CLOSED（交易关闭）。只有 App 支付和手机网站支付交易状态变为 TRADE_CLOSED（交易关闭）会触发异步通知。
+     * ● 部分退款，交易状态仍为 TRADE_SUCCESS（交易成功）。当面付、电脑网站支付、App 支付和手机网站支付交易状态为 TRADE_SUCCESS（交易成功）都会触发异步通知。
+     * 如何区分部分退款和全额退款： https://opendocs.alipay.com/support/01rawd
+     *
+     * 25 小时以内完成 8 次通知（通知的间隔频率一般是 4m，10m，10m，1h，2h，6h，15h）
+     * @param request
+     * @return
+     * @throws ApiException
+     */
+    @PostMapping("/pcNotify")
+    public String notifyPay(HttpServletRequest request) throws ApiException {
+        System.out.println("电脑网站收到异步通知=====支付宝回调");
+        Map&lt;String, String&gt; params = new HashMap&lt;&gt;();
+        Map&lt;String, String[]&gt; requestParams = request.getParameterMap();
+        for (Iterator&lt;String&gt; iter = requestParams.keySet().iterator(); iter.hasNext(); ) {
+            String name = iter.next();
+            String[] values = requestParams.get(name);
+            String valueStr = "";
+            for (int i = 0; i &lt; values.length; i++) {
+                valueStr = (i == values.length - 1) ? valueStr + values[i] : valueStr + values[i] + ",";
+            }
+            params.put(name, valueStr);
+        }
+        //{"gmt_create":"2024-12-19 14:04:16","charset":"UTF-8","gmt_payment":"2024-12-19 14:04:31","notify_time":"2024-12-19 14:04:33","subject":"测试电脑网站支付","sign":"XAzGwc/dZ6ON1TwXvw92GnhF7X4PTZNJ6h6TfH/5T0sgfTtIRVgnny150B7Ip1xHgjpuNoz+T8XlMpMNgvkpxNlcWmlbDfs72Ls/OyyV7ttEKgRos4VWKIrojJ1Apy06H9kie6cCfmBC3mmW9Gh+QAh5oejdZDSq+NDgJIjBlz8S6x85GEQ0BprcVHDfPKubaOWl5nCri7YKxTPOLZcqwTgV9mWXzoIa9hSp32bqyTiLtDlM1h5Z7IJKuj9/EhKuOAz6PF/vws/lftp9gzG3bJVkwwP4z50neyJNWzENIHIKQoGDInZF+T2yNyJJ0YPg/x8LejPzyfdkHjM9bZjBEA\u003d\u003d","buyer_id":"2088722013720112","invoice_amount":"6.88","version":"1.0","notify_id":"2024121901222140432120110505059148","fund_bill_list":"[{\"amount\":\"6.88\",\"fundChannel\":\"ALIPAYACCOUNT\"}]","notify_type":"trade_status_sync","out_trade_no":"1734588234593","total_amount":"6.88","trade_status":"TRADE_SUCCESS","trade_no":"2024121922001420110504898164","auth_app_id":"9021000128652691","receipt_amount":"6.88","point_amount":"0.00","buyer_pay_amount":"6.88","app_id":"9021000128652691","sign_type":"RSA2","seller_id":"2088721013742803"}
+        System.out.println(JSON.serialize(params));
+        // SHA256WithRSA（对应 sign_type 为 RSA2）或 SHA1WithRSA（对应 sign_type 为 RSA）
+        boolean verified = AlipaySignature.verifyV1(params, getAlipayConfig().getAlipayPublicKey(), "UTF-8", "RSA2");
+        if (verified) {
+            //todo 参数验证，out_trade_no，total_amount等
+            //1. 商家需要验证该通知数据中的 out_trade_no 是否为商家系统中创建的订单号。
+            //2. 判断 total_amount 是否确实为该订单的实际金额（即商家订单创建时的金额）。
+            //3. 校验通知中的 seller_id（或者 seller_email ) 是否为 out_trade_no 这笔单据的对应的操作方（有的时候，一个商家可能有多个seller_id/seller_email）。
+            //4. 验证 app_id 是否为该商家本身。
+            System.out.println("支付异步验签成功");
+            String tradeStatus = params.get("trade_status");
+            //总退款金额
+            String refundFee = params.get("refund_fee");
+            //交易退款时间
+            String gmtRefund = params.get("gmt_refund");
+            if (StringUtils.isEmpty(refundFee) &amp;&amp; StringUtils.isEmpty(gmtRefund)){
+                //只有交易通知状态为 TRADE_SUCCESS 或 TRADE_FINISHED 时，支付宝才会认定为买家付款成功。
+                if ("TRADE_SUCCESS".equals(tradeStatus) || "TRADE_FINISHED".equals(tradeStatus)) {
+                    System.out.println("支付成功异步通知");
+                }
+            }else {
+                System.out.println("退款异步通知");
+                String gmtClose = params.get("gmt_close");
+                if ("TRADE_SUCCESS".equals(tradeStatus)) {
+                    //最后一次部分退款没有通知，因为状态已经变成TRADE_CLOSED
+                    System.out.println("部分退款异步通知");
+                }
+                //电脑网站支付应该不会有全额退款通知，因为TRADE_CLOSED不会触发异步通知
+                if ("TRADE_CLOSED".equals(tradeStatus) &amp;&amp; StringUtils.isNotEmpty(gmtClose)){
+                    System.out.println("全额退款异步通知");
+                }
+            }
+            return "success";
+        }else {
+            System.out.println("验签失败，支付失败");
+            return "failure";
+        }
+
+    }
+
+    @PostMapping("/appNotify")
+    public String notifyAppPay(HttpServletRequest request) throws ApiException {
+        System.out.println("app收到异步通知=====支付宝回调");
+        Map&lt;String, String&gt; params = new HashMap&lt;&gt;();
+        Map&lt;String, String[]&gt; requestParams = request.getParameterMap();
+        for (Iterator&lt;String&gt; iter = requestParams.keySet().iterator(); iter.hasNext(); ) {
+            String name = iter.next();
+            String[] values = requestParams.get(name);
+            String valueStr = "";
+            for (int i = 0; i &lt; values.length; i++) {
+                valueStr = (i == values.length - 1) ? valueStr + values[i] : valueStr + values[i] + ",";
+            }
+            params.put(name, valueStr);
+        }
+        System.out.println(JSON.serialize(params));
+        // SHA256WithRSA（对应 sign_type 为 RSA2）或 SHA1WithRSA（对应 sign_type 为 RSA）
+        boolean verified = AlipaySignature.verifyV1(params, getAlipayConfig().getAlipayPublicKey(), "UTF-8", "RSA2");
+        if (verified) {
+            System.out.println("支付异步验签成功");
+            String tradeStatus = params.get("trade_status");
+            //总退款金额
+            String refundFee = params.get("refund_fee");
+            //交易退款时间
+            String gmtRefund = params.get("gmt_refund");
+
+            if (StringUtils.isEmpty(refundFee) &amp;&amp; StringUtils.isEmpty(gmtRefund)){
+                if ("TRADE_SUCCESS".equals(tradeStatus)) {
+                    System.out.println("支付成功异步通知");
+                }
+                if ("TRADE_CLOSED".equals(tradeStatus)) {
+                    System.out.println("交易关闭异步通知");
+                }
+                if ("TRADE_FINISHED".equals(tradeStatus)) {
+                    System.out.println("交易关闭异步通知");
+                }
+            }else {
+                System.out.println("退款异步通知");
+                String gmtClose = params.get("gmt_close");
+                if ("TRADE_SUCCESS".equals(tradeStatus)) {
+                    System.out.println("部分退款异步通知");
+                }
+                //全额退款，或者最后一次部分退款
+                if ("TRADE_CLOSED".equals(tradeStatus) &amp;&amp; StringUtils.isNotEmpty(gmtClose)){
+                    System.out.println("全额退款异步通知");
+                }
+            }
+            return "success";
+        }else {
+            System.out.println("支付异步验签失败，支付失败");
+            return "failure";
+        }
+
+    }
+
+    @GetMapping("/queryOrder")
+    public String queryPage(String orderNo) throws ApiException {
+        //1733990822574
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        // 初始化alipay参数（全局设置一次）
+        defaultClient.setAlipayConfig(getAlipayConfig());
+
+        AlipayTradeApi api = new AlipayTradeApi();
+        AlipayTradeQueryModel data = new AlipayTradeQueryModel();
+
+        // 设置订单支付时传入的商户订单号
+        data.setOutTradeNo(orderNo);
+        try {
+            AlipayTradeQueryResponseModel response = api.query(data);
+            System.out.println("调用成功:" + JSON.serialize(response));
+            return JSON.serialize(response);
+        } catch (ApiException e) {
+            AlipayTradeQueryDefaultResponse errorObject = (AlipayTradeQueryDefaultResponse) e.getErrorObject();
+            System.out.println("调用失败:" + errorObject);
+        }
+        return "";
+    }
+
+    @GetMapping(value = "/payAppOrder")
+    public String payOrderApp() throws ApiException {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        // 初始化alipay参数（全局设置一次）
+        defaultClient.setAlipayConfig(getAlipayConfig());
+
+        GenericExecuteApi api = new GenericExecuteApi();
+
+        // 构造请求参数以调用接口
+        Map&lt;String, Object&gt; bizParams = new HashMap&lt;&gt;();
+        Map&lt;String, Object&gt; bizContent = new HashMap&lt;&gt;();
+
+        // 设置商户订单号
+        bizContent.put("out_trade_no", "70501111111S001111119");
+
+        // 设置订单总金额
+        bizContent.put("total_amount", "9.00");
+
+        // 设置订单标题
+        bizContent.put("subject", "大乐透");
+
+        // 设置产品码
+        bizContent.put("product_code", "QUICK_MSECURITY_PAY");
+
+        // 设置订单附加信息
+        bizContent.put("body", "Iphone6 16G");
+
+        // 设置订单绝对超时时间
+        bizContent.put("time_expire", "2024-12-31 10:05:00");
+
+        // 设置建议使用time_expire字段
+        bizContent.put("timeout_express", "90m");
+        bizParams.put("biz_content", bizContent);
+        // 同步回调指定的页面 app不需要
+       // bizParams.put("return_url", "https://docs.open.alipay.com");
+        bizParams.put("notify_url", "http://xxxx/pay/appNotify");
+
+        try {
+            String orderStr = api.sdkExecute("alipay.trade.app.pay", bizParams);
+            System.out.println(orderStr);
+            return orderStr;
+        } catch (ApiException e) {
+            System.out.println("调用失败");
+        }
+        return "";
+    }
+
+    /**
+     * 预下单（沙箱环境调用显示无权限；ACCESS_FORBIDDEN）
+     * @return
+     * @throws ApiException
+     */
+    @GetMapping(value = "/createPay")
+    public String getOrderPreCreatePay() throws ApiException {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        // 初始化alipay参数（全局设置一次）
+        defaultClient.setAlipayConfig(getAlipayConfig());
+        AlipayTradeApi alipayTradeApi = new AlipayTradeApi();
+        AlipayTradePrecreateModel model = new AlipayTradePrecreateModel();
+        model.setOutTradeNo(String.valueOf(System.currentTimeMillis()));
+        model.setTotalAmount("9.00");
+        model.setSubject("扫码测试");
+        model.setProductCode("QR_CODE_OFFLINE");
+        model.setNotifyUrl("http://xxxx/pay/notify");
+        try {
+            AlipayTradePrecreateResponseModel responseModel = alipayTradeApi.precreate(model);
+            //{"code":"ACQ.ACCESS_FORBIDDEN","message":"ACCESS_FORBIDDEN"} 没有权限，沙箱环境没有alipay.trade.precreate权限
+            System.out.println("调用成功："+JSON.serialize(responseModel));
+            return responseModel.getQrCode();
+        } catch (ApiException e) {
+            System.out.println("调用失败:"+e);
+        }
+        return "";
+    }
+    @GetMapping(value = "/createPay2",produces = "text/html;charset=UTF-8")
+    public String getOrderPreCreatePay2() throws ApiException {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        // 初始化alipay参数（全局设置一次）
+        defaultClient.setAlipayConfig(getAlipayConfig());
+        GenericExecuteApi api = new GenericExecuteApi();
+        HashMap&lt;String, Object&gt; bizContent = new HashMap&lt;&gt;();
+        HashMap&lt;String, Object&gt; bizParams = new HashMap&lt;&gt;();
+        bizContent.put("out_trade_no", String.valueOf(System.currentTimeMillis()));
+        bizContent.put("total_amount", "9.00");
+        bizContent.put("subject", "扫码测试");
+        bizContent.put("product_code", "FAST_INSTANT_TRADE_PAY");
+        /**
+         * 支持前置模式和跳转模式。
+         * 前置模式是将二维码前置到商户的订单确认页的模式。需要商户在自己的页面中以 iframe 方式请求支付宝页面。具体支持的枚举值有以下几种：
+         * 0：订单码-简约前置模式，对应 iframe 宽度不能小于600px，高度不能小于300px；
+         * 1：订单码-前置模式，对应iframe 宽度不能小于 300px，高度不能小于600px；
+         * 3：订单码-迷你前置模式，对应 iframe 宽度不能小于 75px，高度不能小于75px；
+         * 4：订单码-可定义宽度的嵌入式二维码，商户可根据需要设定二维码的大小。
+         * 跳转模式下，用户的扫码界面是由支付宝生成的，不在商户的域名下。支持传入的枚举值有：
+         * 2：订单码-跳转模式
+         */
+        bizContent.put("qr_pay_mode", "4");
+        bizContent.put("qrcode_width", 100);
+        bizParams.put("notify_url", "http://lql5520.yunmv.cn/pay/pcNotify");
+        bizParams.put("return_url", "https://docs.open.alipay.com");
+
+        bizParams.put("biz_content", bizContent);
+        try {
+            String form = api.pageExecute("alipay.trade.page.pay", "POST", bizParams);
+            System.out.println("调用成功："+JSON.serialize(form));
+            return form;
+        } catch (ApiException e) {
+            System.out.println("调用失败:"+e);
+        }
+        return "";
+    }
+
+    /**
+     * https://opendocs.alipay.com/open-v3/01073208_alipay.trade.refund
+     * 退款时根据异步的返回信息可进行判断，但部分接口存在全额退款时不进行触发异步（电脑网站支付，全额退款时，TRADE_CLOSED,没有异步通知），
+     * 因此建议根据退款同步响应参数以及退款查询接口进行判断。
+     *
+     * 部分退款：
+     * 检查是否设置out_request_no参数，该参数是标识一次退款请求，同一笔交易多次退款需要保证唯一，且 部分退款，则此参数必传。
+     * @param orderNo
+     * @param amount
+     * @return
+     * @throws ApiException
+     */
+    @GetMapping ("/refundPay")
+    public String refundPay(String orderNo,String amount) throws ApiException {
+
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        // 初始化alipay参数（全局设置一次）
+        defaultClient.setAlipayConfig(getAlipayConfig());
+
+        // 构造请求参数以调用接口
+        AlipayTradeApi api = new AlipayTradeApi();
+        AlipayTradeRefundModel data = new AlipayTradeRefundModel();
+        // 部分退款时,outRequestNo必传,同一笔交易多次退款需要保证唯一
+        data.outRequestNo(String.valueOf(System.currentTimeMillis()));
+        data.setOutTradeNo(orderNo);
+        data.setRefundAmount(amount);
+        data.setRefundReason("测试退款");
+        // 第三方代调用模式下请设置app_auth_token
+        CustomizedParams params = new CustomizedParams();
+        params.setAppAuthToken("&lt;-- 请填写应用授权令牌 --&gt;");
+        try {
+            AlipayTradeRefundResponseModel response = api.refund(data);
+            //{"buyer_logon_id":"rpv***@sandbox.com","buyer_user_id":"2088722013720112","fund_change":"Y","gmt_refund_pay":"2024-12-19 14:16:39","out_trade_no":"1734423455786","refund_fee":"15.88","send_back_fee":"0.00","trade_no":"2024121722001420110504891744"}
+            System.out.println("调用成功:" + JSON.serialize(response));
+            return JSON.serialize(response);
+        } catch (ApiException e) {
+            AlipayTradeRefundDefaultResponse errorObject = (AlipayTradeRefundDefaultResponse) e.getErrorObject();
+            System.out.println("调用失败:" + errorObject);
+        }
+        return "";
+    }
+
+    /**
+     * 退款查询接口返回 refund_status=REFUND_SUCCESS 表示退款处理成功，否则表示退款没有执行成功。
+     * @param orderNo
+     * @return
+     * @throws ApiException
+     */
+    @GetMapping ("/refundPayQuery")
+    public String refundPayQuery(String orderNo,String outRequestNo) throws ApiException {
+
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        // 初始化alipay参数（全局设置一次）
+        defaultClient.setAlipayConfig(getAlipayConfig());
+
+        // 构造请求参数以调用接口
+        AlipayTradeFastpayRefundApi api = new AlipayTradeFastpayRefundApi();
+        AlipayTradeFastpayRefundQueryModel data = new AlipayTradeFastpayRefundQueryModel();
+        data.setOutTradeNo(orderNo);
+        //部分退款需要传入，哪次退款的outRequestNo
+        data.setOutRequestNo(outRequestNo);
+        // 第三方代调用模式下请设置app_auth_token
+        CustomizedParams params = new CustomizedParams();
+        params.setAppAuthToken("&lt;-- 请填写应用授权令牌 --&gt;");
+        try {
+            AlipayTradeFastpayRefundQueryResponseModel response = api.query(data);
+            //{"out_request_no":"1734575090879","out_trade_no":"1734575090879","refund_amount":"5.88","refund_status":"REFUND_SUCCESS","total_amount":"5.88","trade_no":"2024121922001420110504904489"}
+            System.out.println("调用成功:" + JSON.serialize(response));
+            return JSON.serialize(response);
+        } catch (ApiException e) {
+            AlipayTradeFastpayRefundQueryDefaultResponse errorObject = (AlipayTradeFastpayRefundQueryDefaultResponse) e.getErrorObject();
+            System.out.println("调用失败:" + errorObject);
+        }
+        return "";
+    }
+
+
+    @GetMapping("/closeOrder")
+    public String close(String orderNo) throws ApiException {
+        //1733990822574
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        // 初始化alipay参数（全局设置一次）
+        defaultClient.setAlipayConfig(getAlipayConfig());
+
+        AlipayTradeApi api = new AlipayTradeApi();
+        AlipayTradeCloseModel data = new AlipayTradeCloseModel();
+
+        // 设置订单支付时传入的商户订单号
+        data.setOutTradeNo(orderNo);
+        try {
+            AlipayTradeCloseResponseModel response = api.close(data);
+            System.out.println("调用成功:" + JSON.serialize(response));
+            return JSON.serialize(response);
+        } catch (ApiException e) {
+            AlipayTradeCloseDefaultResponse errorObject = (AlipayTradeCloseDefaultResponse) e.getErrorObject();
+            System.out.println("调用失败:" + errorObject);
+        }
+        return "";
+    }
+
+    @GetMapping("/cancelOrder")
+    public String cancel(String orderNo) throws ApiException {
+        //1733990822574
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        // 初始化alipay参数（全局设置一次）
+        defaultClient.setAlipayConfig(getAlipayConfig());
+
+        AlipayTradeApi api = new AlipayTradeApi();
+        AlipayTradeCancelModel data = new AlipayTradeCancelModel();
+
+        // 设置订单支付时传入的商户订单号
+        data.setOutTradeNo(orderNo);
+        try {
+            AlipayTradeCancelResponseModel response = api.cancel(data);
+            System.out.println("调用成功:" + JSON.serialize(response));
+            return JSON.serialize(response);
+        } catch (ApiException e) {
+            AlipayTradeCancelDefaultResponse errorObject = (AlipayTradeCancelDefaultResponse) e.getErrorObject();
+            System.out.println("调用失败:" + errorObject.getAlipayTradeCancelErrorResponseModel());
+        }
+        return "";
+    }
+    private AlipayConfig getAlipayConfig() {
+        AlipayConfig alipayConfig = new AlipayConfig();
+        //alipayConfig.setServerUrl("https://openapi.alipay.com");
+        alipayConfig.setServerUrl("https://openapi-sandbox.dl.alipaydev.com");
+        alipayConfig.setAppId("902xxxxxxx");
+        alipayConfig.setPrivateKey("MIIEvAIBADAxxxxx");
+        alipayConfig.setAlipayPublicKey("MIIBIjANxxxxxx");
+        return alipayConfig;
+    }
+
+
+}
+</code></pre>
+</article><section class="jump-container is-flex is-justify-content-space-between my-6"><!-- em is empty placeholder--><a class="button is-default" href="/2025/01/23/Vue2%E5%AD%A6%E4%B9%A0/" title="Vue2学习"><i class="iconfont icon-prev mr-2 has-text-grey"></i><span class="has-text-weight-semibold">Previous: Vue2学习</span></a><a class="button is-default" href="/2024/06/05/hello-world/" title="Hello World"><span class="has-text-weight-semibold">Next: Hello World</span><i class="iconfont icon-next ml-2 has-text-grey"></i></a></section><article class="mt-6 comment-container"><script async repo="zhangqingguo/zhangqingguo.github.io" src="https://utteranc.es/client.js" issue-term="pathname" theme="preferred-color-scheme"></script></article></div></div></main></main><footer class="is-flex is-flex-direction-column is-align-items-center is-flex-shrink-0 is-family-serif"><section class="sns-container"><a title="twitter" target="_blank" rel="noopener nofollow" href="//twitter.com//"><i class="iconfont icon-twitter"></i></a><!-- Github--><a title="github" target="_blank" rel="noopener nofollow" href="//github.com/zhangqingguo"><i class="iconfont icon-github"></i></a><!-- Ins--><a title="instagram" target="_blank" rel="noopener nofollow" href="//www.instagram.com//"><i class="iconfont icon-ins"></i></a><!-- RSS--><!-- 知乎--><!-- 领英--><!-- 脸书--><a title="facebook" target="_blank" rel="noopener nofollow" href="//www.facebook.com//"><i class="iconfont icon-tian7_facebook"></i></a></section><p><span>Copyright ©</span><span> ZQG 2025</span></p><div class="is-flex is-justify-content-center is-flex-wrap-wrap"><p>Powered by Hexo &verbar;&nbsp;</p><p class="is-flex is-justify-content-center"><a title="Hexo theme author" target="_blank" rel="noopener" href="//github.com/haojen">Theme by Haojen&nbsp;</a></p><div style="margin-top: 2px"><a class="github-button" title="github-button" target="_blank" rel="noopener" href="https://github.com/haojen/hexo-theme-Claudia" data-color-scheme="no-preference: light; light: light; dark: dark;" data-show-count="true"></a></div></div><div><span></span></div></footer><script async defer src="https://buttons.github.io/buttons.js"></script><script src="/js/jquery-3.6.1.min.js"></script><script src="/js/jquery-fancybox.min.js"></script><script src="/js/img_zoom.js"></script><script src="/js/post.js"> </script><script src="/live2d_models/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2d_models/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2d_models/assets/Bronya.model.json"},"display":{"position":"right","width":240,"height":360,"right":"-80px","hOffset":0,"vOffset":-20},"mobile":{"show":true},"react":{"opacity":0.7},"log":false});</script></body></html>
