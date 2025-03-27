@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2025-03-18T09:02:48.599Z</updated>
+  <updated>2025-03-27T06:26:01.378Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -15,6 +15,27 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>python学习</title>
+    <link href="http://example.com/2025/03/27/python%E5%AD%A6%E4%B9%A0/"/>
+    <id>http://example.com/2025/03/27/python%E5%AD%A6%E4%B9%A0/</id>
+    <published>2025-03-27T06:23:46.000Z</published>
+    <updated>2025-03-27T06:26:01.378Z</updated>
+    
+    
+    
+    
+    <category term="开发" scheme="http://example.com/category/%E5%BC%80%E5%8F%91/"/>
+    
+    
+    <category term="python" scheme="http://example.com/tags/python/"/>
+    
+    <category term="学习笔记" scheme="http://example.com/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+    <category term="编程语言" scheme="http://example.com/tags/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/"/>
+    
+  </entry>
   
   <entry>
     <title>SpringBoot接入itext5生成pdf</title>
