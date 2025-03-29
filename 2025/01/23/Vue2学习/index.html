@@ -1,39 +1,61 @@
 <!DOCTYPE html><html class="appearance-auto" lang="en"><head><meta charset="UTF-8"><title>Vue2学习</title><meta name="description" content="666"><meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, initial-scale=1"><!-- 解决403图片防盗链的问题 -->    <meta content="no-referrer" name="referrer"><!-- Google Analytics --><!-- End Google Analytics -->
-<!-- Baidu Analytics --><!-- End Baidu Analytics --><link rel="icon" href="/images/favicon.ico"><link rel="stylesheet" href="/style/common/bulma.css"><link rel="stylesheet" href="/style/base.css"><link rel="stylesheet" href="/style/common/helper.css"><link rel="stylesheet" href="/style/custom.css"><script src="/js/common.js"></script><link rel="stylesheet" href="/style/post.css"><link rel="stylesheet" href="/style/themes/highlight-theme-light.css"><link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.5.2/css/all.css"><!--link(rel='stylesheet', href= url_for('/style/themes/monokai-sublime.min.css'))--><link rel="stylesheet" href="/style/common/jquery.fancybox.min.css"><!--script(src= url_for("/js/highlight.pack.js"))--><script src="/js/highlight.min.js"></script><style type="text/css">code[class*="language-"], pre[class*="language-"] { white-space: pre !important; }</style><script src="https://cdn.bootcdn.net/ajax/libs/clipboard.js/2.0.11/clipboard.min.js"> </script><script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script><script src="https://cdn.bootcdn.net/ajax/libs/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"></script><script src="/js/hightlight/codeBLang.js"> </script><script src="/js/hightlight/codeBlockFuction.js"> </script><script src="/js/hightlight/codeCopy.js"> </script><script src="/js/hightlight/fullScreen.js"> </script><script src="/js/hightlight/codeShrink.js"> </script><meta name="description" content="Vue2学习视频教程来自尚硅谷：尚硅谷Vue2.0+Vue3.0全套教程丨vuejs从入门到精通_哔哩哔哩_bilibili,vue2文档：介绍 — Vue.js
-1. vue基础知识和原理1.1 初识vue
+<!-- Baidu Analytics --><!-- End Baidu Analytics --><link rel="icon" href="/images/favicon.ico"><link rel="stylesheet" href="/style/common/bulma.css"><link rel="stylesheet" href="/style/base.css"><link rel="stylesheet" href="/style/common/helper.css"><link rel="stylesheet" href="/style/custom.css"><script src="/js/common.js"></script><link rel="stylesheet" href="/style/post.css"><link rel="stylesheet" href="/style/themes/highlight-theme-light.css"><link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.5.2/css/all.css"><!--link(rel='stylesheet', href= url_for('/style/themes/monokai-sublime.min.css'))--><link rel="stylesheet" href="/style/common/jquery.fancybox.min.css"><!--script(src= url_for("/js/highlight.pack.js"))--><script src="/js/highlight.min.js"></script><style type="text/css">code[class*="language-"], pre[class*="language-"] { white-space: pre !important; }</style><script src="https://cdn.bootcdn.net/ajax/libs/clipboard.js/2.0.11/clipboard.min.js"> </script><script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script><script src="https://cdn.bootcdn.net/ajax/libs/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"></script><script src="/js/hightlight/codeBLang.js"> </script><script src="/js/hightlight/codeBlockFuction.js"> </script><script src="/js/hightlight/codeCopy.js"> </script><script src="/js/hightlight/fullScreen.js"> </script><script src="/js/hightlight/codeShrink.js"> </script><meta name="description" content="Vue2学习
+视频教程来自尚硅谷：尚硅谷Vue2.0+Vue3.0全套教程丨vuejs从入门到精通_哔哩哔哩_bilibili,vue2文档：介绍 — Vue.js
+1. vue基础知识和原理
+1.1 初识vue
+
+
 想让Vue工作，就必须创建一个Vue实例，且要传入一个配置对象
+
 
 app容器里的代码依然符合html规范，只不过混入了一些特殊的Vue语法
 
+
 app容器里的代码被称为【Vue模板】
+
 
 Vue实例和容器是一一对应的,不能一对多和多对一
 
+
 真实开发中只有一个Vue实例，并且会配合着组件一起使用
 
-是Vue的语法：插值表达式，可以读取到data中的所有属性
-一旦data中的数据发生改变，那么页面中用到该数据的地方也会自动更新(Vue实现的响应式)代码：这里是直接引入开发版本的vue.js,可以去官网下载
 
-.."><meta name="generator" content="Hexo 7.0.0">
+是Vue的语法：插值表达式，可以读取到data中的所有属性
+
+
+一旦data中的数据发生改变，那么页面中用到该数据的地方也会自动更新(Vue实现的响应式)
+代码：这里是直接引入开发版本的vue..."><meta name="generator" content="Hexo 7.0.0"><link rel="alternate" href="/atom.xml" title="ZQG的博客" type="application/atom+xml">
+
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
-<link rel="alternate" href="/atom.xml" title="ZQG的博客" type="application/atom+xml">
-</head><body class="is-flex is-flex-direction-column"><header class="header-widget is-flex-shrink-0 is-hidden-mobile"><div class="container is-fullhd is-flex is-justify-content-space-between is-align-items-center is-full-height"><section class="is-hidden-mobile is-flex-shrink-0"><h2><a href="/">ZQG's blog  </a><iframe frameborder="0" height="20" hspace="0" scrolling="no" src="https://i.tianqi.com/?c=code&amp;a=getcode&amp;id=1&amp;icon=1" width="550"></iframe><iframe clocktype="html5" frameborder="no" scrolling="no" style="overflow:hidden;border:0;margin:0;padding:0;width:140px;height:25px;" src="https://www.clocklink.com/html5embed.php?clock=047&amp;timezone=CCT&amp;color=black&amp;size=140&amp;Title=&amp;Message=&amp;Target=&amp;From=2024,1,1,0,0,0&amp;Color=black"></iframe></h2></section><h3 class="is-hidden-mobile is-family-serif is-full-height is-flex is-align-items-center is-flex-shrink-0"><div class="is-full-height" id="postTopic"><p class="is-full-height is-flex-shrink-0 is-flex is-align-items-center is-justify-content-center">Vue2学习</p><p class="is-full-height is-flex-shrink-0 is-flex is-align-items-center is-justify-content-center">Click back to the top</p></div></h3><aside class="is-flex-shrink-0"><h3 class="is-inline-block"><a href="/">Home</a></h3><h3 class="is-inline-block"><a href="/archives">Archives</a></h3><h3 class="is-inline-block"><a href="/about">About</a></h3></aside></div></header><header class="is-flex header-widget is-flex-shrink-0 is-align-items-center is-justify-content-center is-hidden-tablet"><h3 class="is-inline-block"><a href="/">Home</a></h3><h3 class="is-inline-block"><a href="/archives">Archives</a></h3><h3 class="is-inline-block"><a href="/about">About</a></h3></header><main><main class="container is-max-widescreen content section post-page pt-4 px-4"><div class="columns is-flex-desktop is-justify-content-center is-flex-direction-row-reverse"><div class="column is-3 is-hidden-mobile"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Vue2%E5%AD%A6%E4%B9%A0"><span class="toc-text">Vue2学习</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-vue%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E5%8E%9F%E7%90%86"><span class="toc-text">1. vue基础知识和原理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-%E5%88%9D%E8%AF%86vue"><span class="toc-text">1.1 初识vue</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-%E6%A8%A1%E6%9D%BF%E8%AF%AD%E6%B3%95"><span class="toc-text">1.2 模板语法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-3-%E6%95%B0%E6%8D%AE%E7%BB%91%E5%AE%9A"><span class="toc-text">1.3 数据绑定</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-4-el%E4%B8%8Edata%E7%9A%84%E4%B8%A4%E7%A7%8D%E5%86%99%E6%B3%95"><span class="toc-text">1.4 el与data的两种写法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-5-MVVM%E6%A8%A1%E5%9E%8B"><span class="toc-text">1.5 MVVM模型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-6-%E6%95%B0%E6%8D%AE%E4%BB%A3%E7%90%86"><span class="toc-text">1.6 数据代理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-7-%E4%BA%8B%E4%BB%B6%E5%A4%84%E7%90%86"><span class="toc-text">1.7 事件处理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-8-%E9%94%AE%E7%9B%98%E4%BA%8B%E4%BB%B6"><span class="toc-text">1.8 键盘事件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-9-%E8%AE%A1%E7%AE%97%E5%B1%9E%E6%80%A7"><span class="toc-text">1.9 计算属性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-10-%E7%9B%91%E8%A7%86%E5%B1%9E%E6%80%A7"><span class="toc-text">1.10 监视属性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-11-%E7%BB%91%E5%AE%9A%E6%A0%B7%E5%BC%8F"><span class="toc-text">1.11 绑定样式</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#class%E6%A0%B7%E5%BC%8F"><span class="toc-text">class样式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#style%E6%A0%B7%E5%BC%8F"><span class="toc-text">style样式</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-12-%E6%9D%A1%E4%BB%B6%E6%B8%B2%E6%9F%93"><span class="toc-text">1.12 条件渲染</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#v-if"><span class="toc-text">v-if</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#v-show"><span class="toc-text">v-show</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-13-%E5%88%97%E8%A1%A8%E6%B8%B2%E6%9F%93"><span class="toc-text">1.13 列表渲染</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#v-for%E6%8C%87%E4%BB%A4"><span class="toc-text">v-for指令</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#key%E7%9A%84%E5%8E%9F%E7%90%86"><span class="toc-text">key的原理</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-14-%E5%88%97%E8%A1%A8%E8%BF%87%E6%BB%A4"><span class="toc-text">1.14 列表过滤</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-15-%E5%88%97%E8%A1%A8%E6%8E%92%E5%BA%8F"><span class="toc-text">1.15 列表排序</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-16-Vue%E7%9B%91%E6%B5%8B%E6%95%B0%E6%8D%AE%E7%9A%84%E5%8E%9F%E7%90%86"><span class="toc-text">1.16 Vue监测数据的原理</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%9B%91%E6%B5%8B%E5%AF%B9%E8%B1%A1%E6%95%B0%E6%8D%AE%EF%BC%9A"><span class="toc-text">监测对象数据：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%9B%91%E6%B5%8B%E6%95%B0%E7%BB%84%EF%BC%9A"><span class="toc-text">监测数组：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%80%BB%E7%BB%93%EF%BC%9A"><span class="toc-text">总结：</span></a></li></ol></li></ol></li></ol></li></ol></div><div class="column is-9"><header class="my-4"><a href="/tags/Vue"><i class="tag post-item-tag">Vue</i></a><a href="/tags/Vue2"><i class="tag post-item-tag">Vue2</i></a><a href="/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%8C%E5%89%8D%E7%AB%AF"><i class="tag post-item-tag">学习笔记，前端</i></a></header><h1 class="mt-0 mb-1 is-family-serif" id="postTitle">Vue2学习</h1><time class="has-text-grey" datetime="2025-01-23T01:20:56.000Z">2025-01-23</time><article class="mt-2 post-content"><h1 id="Vue2学习"><a href="#Vue2学习" class="headerlink" title="Vue2学习"></a>Vue2学习</h1><p>视频教程来自尚硅谷：<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1Zy4y1K7SH/?vd_source=51c1f9b29ad3cdfa95187e2976f09cef">尚硅谷Vue2.0+Vue3.0全套教程丨vuejs从入门到精通_哔哩哔哩_bilibili</a>,vue2文档：<a target="_blank" rel="noopener" href="https://v2.cn.vuejs.org/v2/guide/">介绍 — Vue.js</a></p>
-<h2 id="1-vue基础知识和原理"><a href="#1-vue基础知识和原理" class="headerlink" title="1. vue基础知识和原理"></a>1. vue基础知识和原理</h2><h3 id="1-1-初识vue"><a href="#1-1-初识vue" class="headerlink" title="1.1 初识vue"></a>1.1 初识vue</h3><ul>
-<li><p>想让Vue工作，就必须创建一个Vue实例，且要传入一个配置对象</p>
+</head><body class="is-flex is-flex-direction-column"><header class="header-widget is-flex-shrink-0 is-hidden-mobile"><div class="container is-fullhd is-flex is-justify-content-space-between is-align-items-center is-full-height"><section class="is-hidden-mobile is-flex-shrink-0"><h2><a href="/">ZQG's blog  </a><iframe frameborder="0" height="20" hspace="0" scrolling="no" src="https://i.tianqi.com/?c=code&amp;a=getcode&amp;id=1&amp;icon=1" width="550"></iframe><iframe clocktype="html5" frameborder="no" scrolling="no" style="overflow:hidden;border:0;margin:0;padding:0;width:140px;height:25px;" src="https://www.clocklink.com/html5embed.php?clock=047&amp;timezone=CCT&amp;color=black&amp;size=140&amp;Title=&amp;Message=&amp;Target=&amp;From=2024,1,1,0,0,0&amp;Color=black"></iframe></h2></section><h3 class="is-hidden-mobile is-family-serif is-full-height is-flex is-align-items-center is-flex-shrink-0"><div class="is-full-height" id="postTopic"><p class="is-full-height is-flex-shrink-0 is-flex is-align-items-center is-justify-content-center">Vue2学习</p><p class="is-full-height is-flex-shrink-0 is-flex is-align-items-center is-justify-content-center">Click back to the top</p></div></h3><aside class="is-flex-shrink-0"><h3 class="is-inline-block"><a href="/">Home</a></h3><h3 class="is-inline-block"><a href="/archives">Archives</a></h3><h3 class="is-inline-block"><a href="/about">About</a></h3></aside></div></header><header class="is-flex header-widget is-flex-shrink-0 is-align-items-center is-justify-content-center is-hidden-tablet"><h3 class="is-inline-block"><a href="/">Home</a></h3><h3 class="is-inline-block"><a href="/archives">Archives</a></h3><h3 class="is-inline-block"><a href="/about">About</a></h3></header><main><main class="container is-max-widescreen content section post-page pt-4 px-4"><div class="columns is-flex-desktop is-justify-content-center is-flex-direction-row-reverse"><div class="column is-3 is-hidden-mobile"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-text">Vue2学习</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-vue%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E5%8E%9F%E7%90%86"><span class="toc-text">1. vue基础知识和原理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-%E5%88%9D%E8%AF%86vue"><span class="toc-text">1.1 初识vue</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-%E6%A8%A1%E6%9D%BF%E8%AF%AD%E6%B3%95"><span class="toc-text">1.2 模板语法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-3-%E6%95%B0%E6%8D%AE%E7%BB%91%E5%AE%9A"><span class="toc-text">1.3 数据绑定</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-4-el%E4%B8%8Edata%E7%9A%84%E4%B8%A4%E7%A7%8D%E5%86%99%E6%B3%95"><span class="toc-text">1.4 el与data的两种写法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-5-MVVM%E6%A8%A1%E5%9E%8B"><span class="toc-text">1.5 MVVM模型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-6-%E6%95%B0%E6%8D%AE%E4%BB%A3%E7%90%86"><span class="toc-text">1.6 数据代理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-7-%E4%BA%8B%E4%BB%B6%E5%A4%84%E7%90%86"><span class="toc-text">1.7 事件处理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-8-%E9%94%AE%E7%9B%98%E4%BA%8B%E4%BB%B6"><span class="toc-text">1.8 键盘事件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-9-%E8%AE%A1%E7%AE%97%E5%B1%9E%E6%80%A7"><span class="toc-text">1.9 计算属性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-10-%E7%9B%91%E8%A7%86%E5%B1%9E%E6%80%A7"><span class="toc-text">1.10 监视属性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-11-%E7%BB%91%E5%AE%9A%E6%A0%B7%E5%BC%8F"><span class="toc-text">1.11 绑定样式</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#class%E6%A0%B7%E5%BC%8F"><span class="toc-text">class样式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#style%E6%A0%B7%E5%BC%8F"><span class="toc-text">style样式</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-12-%E6%9D%A1%E4%BB%B6%E6%B8%B2%E6%9F%93"><span class="toc-text">1.12 条件渲染</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#v-if"><span class="toc-text">v-if</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#v-show"><span class="toc-text">v-show</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-13-%E5%88%97%E8%A1%A8%E6%B8%B2%E6%9F%93"><span class="toc-text">1.13 列表渲染</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#v-for%E6%8C%87%E4%BB%A4"><span class="toc-text">v-for指令</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#key%E7%9A%84%E5%8E%9F%E7%90%86"><span class="toc-text">key的原理</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-14-%E5%88%97%E8%A1%A8%E8%BF%87%E6%BB%A4"><span class="toc-text">1.14 列表过滤</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-15-%E5%88%97%E8%A1%A8%E6%8E%92%E5%BA%8F"><span class="toc-text">1.15 列表排序</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-16-Vue%E7%9B%91%E6%B5%8B%E6%95%B0%E6%8D%AE%E7%9A%84%E5%8E%9F%E7%90%86"><span class="toc-text">1.16 Vue监测数据的原理</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%9B%91%E6%B5%8B%E5%AF%B9%E8%B1%A1%E6%95%B0%E6%8D%AE%EF%BC%9A"><span class="toc-text">监测对象数据：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%9B%91%E6%B5%8B%E6%95%B0%E7%BB%84%EF%BC%9A"><span class="toc-text">监测数组：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%80%BB%E7%BB%93%EF%BC%9A"><span class="toc-text">总结：</span></a></li></ol></li></ol></li></ol></li></ol></div><div class="column is-9"><header class="my-4"><a href="/tags/Vue"><i class="tag post-item-tag">Vue</i></a><a href="/tags/Vue2"><i class="tag post-item-tag">Vue2</i></a><a href="/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%8C%E5%89%8D%E7%AB%AF"><i class="tag post-item-tag">学习笔记，前端</i></a></header><h1 class="mt-0 mb-1 is-family-serif" id="postTitle">Vue2学习</h1><time class="has-text-grey" datetime="2025-01-23T01:20:56.000Z">2025-01-23</time><article class="mt-2 post-content"><h1>Vue2学习</h1>
+<p>视频教程来自尚硅谷：<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1Zy4y1K7SH/?vd_source=51c1f9b29ad3cdfa95187e2976f09cef">尚硅谷Vue2.0+Vue3.0全套教程丨vuejs从入门到精通_哔哩哔哩_bilibili</a>,vue2文档：<a target="_blank" rel="noopener" href="https://v2.cn.vuejs.org/v2/guide/">介绍 — Vue.js</a></p>
+<h2 id="1-vue基础知识和原理">1. vue基础知识和原理</h2>
+<h3 id="1-1-初识vue">1.1 初识vue</h3>
+<ul>
+<li>
+<p>想让Vue工作，就必须创建一个Vue实例，且要传入一个配置对象</p>
 </li>
-<li><p>app容器里的代码依然符合html规范，只不过混入了一些特殊的Vue语法</p>
+<li>
+<p>app容器里的代码依然符合html规范，只不过混入了一些特殊的Vue语法</p>
 </li>
-<li><p>app容器里的代码被称为【Vue模板】</p>
+<li>
+<p>app容器里的代码被称为【Vue模板】</p>
 </li>
-<li><p>Vue实例和容器是一一对应的,不能一对多和多对一</p>
+<li>
+<p>Vue实例和容器是一一对应的,不能一对多和多对一</p>
 </li>
-<li><p>真实开发中只有一个Vue实例，并且会配合着组件一起使用</p>
+<li>
+<p>真实开发中只有一个Vue实例，并且会配合着组件一起使用</p>
 </li>
-<li>是Vue的语法：插值表达式，可以读取到data中的所有属性</li>
-<li><p>一旦data中的数据发生改变，那么页面中用到该数据的地方也会自动更新(Vue实现的响应式)<br>代码：这里是直接引入开发版本的vue.js,可以去官网下载</p>
+<li>
+是Vue的语法：插值表达式，可以读取到data中的所有属性
+</li>
+<li>
+<p>一旦data中的数据发生改变，那么页面中用到该数据的地方也会自动更新(Vue实现的响应式)<br>
+代码：这里是直接引入开发版本的vue.js,可以去官网下载</p>
 </li>
 </ul>
-<pre><code class="html">&lt;!DOCTYPE html&gt;
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
 &lt;html lang="en"&gt;
 &lt;head&gt;
     &lt;meta charset="UTF-8"&gt;
@@ -63,7 +85,8 @@ Vue实例和容器是一一对应的,不能一对多和多对一
 &lt;/body&gt;
 &lt;/html&gt;
 </code></pre>
-<h3 id="1-2-模板语法"><a href="#1-2-模板语法" class="headerlink" title="1.2 模板语法"></a>1.2 模板语法</h3><p>Vue模板语法有2大类:</p>
+<h3 id="1-2-模板语法">1.2 模板语法</h3>
+<p>Vue模板语法有2大类:</p>
 <ul>
 <li>插值语法：</li>
 </ul>
@@ -74,7 +97,7 @@ Vue实例和容器是一一对应的,不能一对多和多对一
 </ul>
 <p>​    功能：用于解析标签（包括：标签属性、标签体内容、绑定事件…）</p>
 <p>​    举例：v-bind:href=“xxx” 或 简写为 :href=“xxx”，xxx同样要写js表达式，且可以直接读取到data中的所有属性</p>
-<pre><code class="html">&lt;!DOCTYPE html&gt;
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
 &lt;html lang="en"&gt;
 &lt;head&gt;
     &lt;meta charset="UTF-8"&gt;
@@ -111,7 +134,8 @@ Vue实例和容器是一一对应的,不能一对多和多对一
 &lt;/body&gt;
 &lt;/html&gt;
 </code></pre>
-<h3 id="1-3-数据绑定"><a href="#1-3-数据绑定" class="headerlink" title="1.3 数据绑定"></a>1.3 数据绑定</h3><p>Vue中有2种数据绑定的方式：</p>
+<h3 id="1-3-数据绑定">1.3 数据绑定</h3>
+<p>Vue中有2种数据绑定的方式：</p>
 <ul>
 <li>单向绑定(v-bind)：数据只能从data流向页面</li>
 <li>双向绑定(v-model)：数据不仅能从data流向页面，还可以从页面流向data</li>
@@ -119,7 +143,7 @@ Vue实例和容器是一一对应的,不能一对多和多对一
 <p>注意：</p>
 <p>1.双向绑定一般都应用在表单类元素上（如：input、select等）</p>
 <p>2.v-model:value 可以简写为 v-model，因为v-model默认收集的就是value值</p>
-<pre><code class="html">&lt;!DOCTYPE html&gt;
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
 &lt;html lang="en"&gt;
 &lt;head&gt;
     &lt;meta charset="UTF-8"&gt;
@@ -151,18 +175,21 @@ Vue实例和容器是一一对应的,不能一对多和多对一
 &lt;/body&gt;
 &lt;/html&gt;
 </code></pre>
-<h3 id="1-4-el与data的两种写法"><a href="#1-4-el与data的两种写法" class="headerlink" title="1.4 el与data的两种写法"></a>1.4 el与data的两种写法</h3><p>el有2种写法</p>
+<h3 id="1-4-el与data的两种写法">1.4 el与data的两种写法</h3>
+<p>el有2种写法</p>
 <ul>
 <li>new Vue时候配置el属性</li>
 <li>先创建Vue实例，随后再通过vm.$mount(‘#root’)指定el的值</li>
 </ul>
 <p>data有2种写法</p>
 <ul>
-<li><p>对象式</p>
+<li>
+<p>对象式</p>
 </li>
-<li><p>函数式</p>
+<li>
+<p>函数式</p>
 <p>注意：在组件中，data必须使用函数式。一个重要原则：由Vue管理的函数不能是箭头函数，因为这样写this就不再是Vue实例了。</p>
-<pre><code class="html">&lt;!DOCTYPE html&gt;
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
 &lt;html lang="en"&gt;
 &lt;head&gt;
     &lt;meta charset="UTF-8"&gt;
@@ -210,10 +237,13 @@ Vue实例和容器是一一对应的,不能一对多和多对一
 </code></pre>
 </li>
 </ul>
-<h3 id="1-5-MVVM模型"><a href="#1-5-MVVM模型" class="headerlink" title="1.5 MVVM模型"></a>1.5 MVVM模型</h3><ul>
-<li><p>M：模型(Model) ：data中的数据</p>
+<h3 id="1-5-MVVM模型">1.5 MVVM模型</h3>
+<ul>
+<li>
+<p>M：模型(Model) ：data中的数据</p>
 </li>
-<li><p>V：视图(View) ：模板代码</p>
+<li>
+<p>V：视图(View) ：模板代码</p>
 </li>
 </ul>
 <ul>
@@ -222,13 +252,16 @@ Vue实例和容器是一一对应的,不能一对多和多对一
 <p><img src="https://img-blog.csdnimg.cn/02f5aad7bfc440789dfa852b370f740d.webp" alt="mvvm"></p>
 <p>data中的所有属性都在vm中。</p>
 <p>vm的所有属性，包括Vue原型上所有属性，Vue模板都可以直接使用。</p>
-<h3 id="1-6-数据代理"><a href="#1-6-数据代理" class="headerlink" title="1.6 数据代理"></a>1.6 数据代理</h3><p>通过一个对象代理对另一个对象中的属性的操作(读/写)。</p>
+<h3 id="1-6-数据代理">1.6 数据代理</h3>
+<p>通过一个对象代理对另一个对象中的属性的操作(读/写)。</p>
 <p>主要通过js方法：Object.defineProperty()实现的，需要先去了解Object.defineProperty()相关知识，属性标志，属性描述符，getter，setter.</p>
 <p>简单介绍一下：</p>
 <p>属性标志:</p>
 <p>对象属性（properties），除 value 外，还有三个特殊的特性（attributes），也就是所谓的“标志”</p>
-<p>writable — 如果为 true，则值可以被修改，否则它是只可读的，默认为false<br>enumerable — 如果为 true，则表示是可以遍历的，可以在for… .in Object.keys()中遍历出来，默认为false<br>configurable — 如果为 true，则此属性可以被删除，这些特性也可以被修改，否则不可以，默认为false</p>
-<pre><code class="javascript">&lt;script type="text/javascript"&gt;
+<p>writable — 如果为 true，则值可以被修改，否则它是只可读的，默认为false<br>
+enumerable — 如果为 true，则表示是可以遍历的，可以在for… .in Object.keys()中遍历出来，默认为false<br>
+configurable — 如果为 true，则此属性可以被删除，这些特性也可以被修改，否则不可以，默认为false</p>
+<pre><code class="language-javascript">&lt;script type="text/javascript"&gt;
     let num = 18;
     let person = {
         name: 'ZQG',
@@ -245,10 +278,10 @@ Vue实例和容器是一一对应的,不能一对多和多对一
 &lt;/script&gt;
 </code></pre>
 <p>如图：</p>
-<p><img src="/2025/01/23/Vue2%E5%AD%A6%E4%B9%A0/image-20250123165409650.png" alt="image-20250123165409650"></p>
+<p><img src="image-20250123165409650.png" alt="image-20250123165409650"></p>
 <p>如果不将相应的配置设置为true，修改不起作用，删除也返回false，也无法枚举。</p>
 <p>使用getter和setter时：</p>
-<pre><code class="javascript">&lt;script type="text/javascript"&gt;
+<pre><code class="language-javascript">&lt;script type="text/javascript"&gt;
     let num = 18;
     let person = {
         name: 'ZQG',
@@ -272,13 +305,18 @@ Vue实例和容器是一一对应的,不能一对多和多对一
   console.log(person);
 &lt;/script&gt;
 </code></pre>
-<p><img src="/2025/01/23/Vue2%E5%AD%A6%E4%B9%A0/image-20250123170003588.png" alt="image-20250123170003588"></p>
+<p><img src="image-20250123170003588.png" alt="image-20250123170003588"></p>
 <p>每次访问person.age时，会触发getter函数，返回num值；当设置person.age = xx值时，会把值设置给num，这样再次读取会返回最新的num值，（直接设置num值，获取age值也是返回设置后的num值）这样就实现了数据代理。</p>
 <p><strong>Vue中的数据代理</strong></p>
-<p>Vue中的数据代理：通过vm对象来代理data对象中属性的操作（读/写）<br>Vue中数据代理的好处：更加方便的操作data中的数据<br>基本原理：<br>通过Object.defineProperty()把data对象中所有属性添加到vm上。<br>为每一个添加到vm上的属性，都指定一个getter/setter。<br>在getter/setter内部去操作（读/写）data中对应的属性。</p>
+<p>Vue中的数据代理：通过vm对象来代理data对象中属性的操作（读/写）<br>
+Vue中数据代理的好处：更加方便的操作data中的数据<br>
+基本原理：<br>
+通过Object.defineProperty()把data对象中所有属性添加到vm上。<br>
+为每一个添加到vm上的属性，都指定一个getter/setter。<br>
+在getter/setter内部去操作（读/写）data中对应的属性。</p>
 <p>我们代码中的data实际和Vue实例中的_data是相等的，所以取值，Vue为了代码写的方便，通过数据代理将_data的属性值，直接放在vm中，所以直接取值用就可以了。</p>
 <p>验证代码：为了验证data和我们代码中的数据（person）是一样的，所以把person定义在外面，这样可以直接可以_data==person作比较</p>
-<pre><code class="html">&lt;!DOCTYPE html&gt;
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
 &lt;html lang="en"&gt;
 &lt;head&gt;
     &lt;meta charset="UTF-8"&gt;
@@ -304,18 +342,19 @@ Vue实例和容器是一一对应的,不能一对多和多对一
 &lt;/body&gt;
 &lt;/html&gt;
 </code></pre>
-<p><img src="/2025/01/23/Vue2%E5%AD%A6%E4%B9%A0/image-20250123175247017.png" alt="image-20250123175247017"></p>
-<p><img src="/2025/01/23/Vue2%E5%AD%A6%E4%B9%A0/image-20250123175508777.png" alt="image-20250123175508777"></p>
-<p><img src="/2025/01/23/Vue2%E5%AD%A6%E4%B9%A0/image-20250123175744591.png" alt="image-20250123175744591"></p>
-<h3 id="1-7-事件处理"><a href="#1-7-事件处理" class="headerlink" title="1.7 事件处理"></a>1.7 事件处理</h3><p>事件的基本使用：</p>
+<p><img src="image-20250123175247017.png" alt="image-20250123175247017"></p>
+<p><img src="image-20250123175508777.png" alt="image-20250123175508777"></p>
+<p><img src="image-20250123175744591.png" alt="image-20250123175744591"></p>
+<h3 id="1-7-事件处理">1.7 事件处理</h3>
+<p>事件的基本使用：</p>
 <ul>
 <li>使用v-on:xxx 或 @xxx 绑定事件，其中xxx是事件名</li>
 <li>事件的回调需要配置在methods对象中，最终会在vm上</li>
 <li>methods中配置的函数不要用箭头函数，这会导致this不再是vm了</li>
 <li>methods中配置的函数，都是被Vue所管理的函数，this的指向是vm 或 组件实例对象</li>
-<li>@click=”show” 和@click=”show($event)”，效果一致，但是后者可以传参</li>
+<li>@click=“show” 和@click=“show($event)”，效果一致，但是后者可以传参</li>
 </ul>
-<pre><code class="html">&lt;!DOCTYPE html&gt;
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
 &lt;html lang="en"&gt;
 &lt;head&gt;
     &lt;meta charset="UTF-8"&gt;
@@ -363,7 +402,7 @@ Vue实例和容器是一一对应的,不能一对多和多对一
 <li>self: 只有event.target是当前的操作元素时才触发事件</li>
 <li>passive: 事件的默认行为立即执行，无需等待事件回调完毕</li>
 </ul>
-<pre><code class="html">&lt;!DOCTYPE html&gt;
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
 &lt;html lang="en"&gt;
 &lt;head&gt;
     &lt;meta charset="UTF-8"&gt;
@@ -406,7 +445,7 @@ Vue实例和容器是一一对应的,不能一对多和多对一
     &lt;a href="https://www.baidu.com" @click.prevent="showInfo"&gt;点我跳转&lt;/a&gt;
 
     &lt;div class="dd" @click="showInfo"&gt;
-        &lt;!--   阻止事件冒泡     --&gt;
+    	&lt;!--   阻止事件冒泡     --&gt;
        &lt;button @click.stop="showInfo"&gt;点我&lt;/button&gt;
          &lt;!--   修饰符可以连续写--&gt;
         &lt;a href="https://www.baidu.com" @click.prevent.stop="showInfo"&gt;点我跳转&lt;/a&gt;
@@ -463,7 +502,8 @@ Vue实例和容器是一一对应的,不能一对多和多对一
 &lt;/body&gt;
 &lt;/html&gt;
 </code></pre>
-<h3 id="1-8-键盘事件"><a href="#1-8-键盘事件" class="headerlink" title="1.8 键盘事件"></a>1.8 键盘事件</h3><p>键盘事件语法糖：@keydown，@keyup</p>
+<h3 id="1-8-键盘事件">1.8 键盘事件</h3>
+<p>键盘事件语法糖：@keydown，@keyup</p>
 <p>1.Vue中常用的按键别名：</p>
 <ul>
 <li>回车 =&gt; enter</li>
@@ -482,7 +522,7 @@ Vue实例和容器是一一对应的,不能一对多和多对一
 <p>​	3.2配合keydown使用：正常触发</p>
 <p>4.可以使用keyCode去指定具体的按键（不推荐）</p>
 <p>5.Vue.config.keyCode.自定义键名=键码，可以定制按键别名</p>
-<pre><code class="html">&lt;!DOCTYPE html&gt;
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
 &lt;html lang="en"&gt;
 &lt;head&gt;
     &lt;meta charset="UTF-8"&gt;
@@ -517,8 +557,17 @@ Vue实例和容器是一一对应的,不能一对多和多对一
 &lt;/body&gt;
 &lt;/html&gt;
 </code></pre>
-<h3 id="1-9-计算属性"><a href="#1-9-计算属性" class="headerlink" title="1.9 计算属性"></a>1.9 计算属性</h3><p>定义：要用的属性不存在，要通过已有属性计算得来。<br>原理：底层借助了Objcet.defineProperty方法提供的getter和setter<br>get函数什么时候执行？<br>(1).初次读取时会执行一次<br>(2).当依赖的数据发生改变时会被再次调用<br>优势：与methods实现相比，内部有缓存机制（复用），效率更高，调试方便<br>备注：<br>计算属性最终会出现在vm上，直接读取使用即可<br>如果计算属性要被修改，那必须写set函数去响应修改，且set中要引起计算时依赖的数据发生改变</p>
-<pre><code class="html">&lt;!DOCTYPE html&gt;
+<h3 id="1-9-计算属性">1.9 计算属性</h3>
+<p>定义：要用的属性不存在，要通过已有属性计算得来。<br>
+原理：底层借助了Objcet.defineProperty方法提供的getter和setter<br>
+get函数什么时候执行？<br>
+(1).初次读取时会执行一次<br>
+(2).当依赖的数据发生改变时会被再次调用<br>
+优势：与methods实现相比，内部有缓存机制（复用），效率更高，调试方便<br>
+备注：<br>
+计算属性最终会出现在vm上，直接读取使用即可<br>
+如果计算属性要被修改，那必须写set函数去响应修改，且set中要引起计算时依赖的数据发生改变</p>
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
 &lt;html lang="en"&gt;
 &lt;head&gt;
     &lt;meta charset="UTF-8"&gt;
@@ -574,17 +623,19 @@ Vue实例和容器是一一对应的,不能一对多和多对一
 &lt;/body&gt;
 &lt;/html&gt;
 </code></pre>
-<h3 id="1-10-监视属性"><a href="#1-10-监视属性" class="headerlink" title="1.10 监视属性"></a>1.10 监视属性</h3><p>监视属性watch：</p>
+<h3 id="1-10-监视属性">1.10 监视属性</h3>
+<p>监视属性watch：</p>
 <ul>
 <li>当被监视的属性变化时, 回调函数自动调用, 进行相关操作</li>
 <li>监视的属性必须存在，才能进行监视</li>
-<li>监视的两种写法：<ul>
+<li>监视的两种写法：
+<ul>
 <li>(1).new Vue时传入watch配置</li>
 <li>(2).通过vm.$watch监视</li>
 </ul>
 </li>
 </ul>
-<pre><code class="html">&lt;!DOCTYPE html&gt;
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
 &lt;html lang="en"&gt;
 &lt;head&gt;
     &lt;meta charset="UTF-8"&gt;
@@ -662,10 +713,12 @@ Vue实例和容器是一一对应的,不能一对多和多对一
 &lt;/body&gt;
 &lt;/html&gt;
 </code></pre>
-<p>(1).Vue中的watch默认不监测对象内部值的改变（一层）<br>(2).配置deep:true可以监测对象内部值改变（多层）<br>备注：</p>
+<p>(1).Vue中的watch默认不监测对象内部值的改变（一层）<br>
+(2).配置deep:true可以监测对象内部值改变（多层）<br>
+备注：</p>
 <p>(1).Vue自身可以监测对象内部值的改变，但Vue提供的watch默认不可以</p>
 <p>(2).使用watch时根据数据的具体结构，决定是否采用深度监视</p>
-<pre><code class="html">&lt;!DOCTYPE html&gt;
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
 &lt;html lang="en"&gt;
 &lt;head&gt;
     &lt;meta charset="UTF-8"&gt;
@@ -739,10 +792,12 @@ Vue实例和容器是一一对应的,不能一对多和多对一
 &lt;/html&gt;
 </code></pre>
 <p>computed和watch之间的区别：</p>
-<p>computed能完成的功能，watch都可以完成<br>watch能完成的功能，computed不一定能完成，例如：watch可以进行异步操作<br>两个重要的小原则：</p>
+<p>computed能完成的功能，watch都可以完成<br>
+watch能完成的功能，computed不一定能完成，例如：watch可以进行异步操作<br>
+两个重要的小原则：</p>
 <p>1.所被Vue管理的函数，最好写成普通函数，这样this的指向才是vm 或 组件实例对象</p>
 <p>2.所有不被Vue所管理的函数（定时器的回调函数、ajax的回调函数等、Promise的回调函数），最好写成箭头函数，这样this的指向才是vm 或 组件实例对象</p>
-<pre><code class="html">&lt;!DOCTYPE html&gt;
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
 &lt;html lang="en"&gt;
 &lt;head&gt;
     &lt;meta charset="UTF-8"&gt;
@@ -781,7 +836,9 @@ Vue实例和容器是一一对应的,不能一对多和多对一
 &lt;/body&gt;
 &lt;/html&gt;
 </code></pre>
-<h3 id="1-11-绑定样式"><a href="#1-11-绑定样式" class="headerlink" title="1.11 绑定样式"></a>1.11 绑定样式</h3><h4 id="class样式"><a href="#class样式" class="headerlink" title="class样式"></a><strong>class样式</strong></h4><p>写法：:class=“xxx” xxx可以是字符串、对象、数。</p>
+<h3 id="1-11-绑定样式">1.11 绑定样式</h3>
+<h4 id="class样式"><strong>class样式</strong></h4>
+<p>写法：:class=“xxx” xxx可以是字符串、对象、数。</p>
 <p>所以分为三种写法，字符串写法，数组写法，对象写法</p>
 <p><strong>字符串写法</strong></p>
 <p>字符串写法适用于：类名不确定，要动态获取。</p>
@@ -789,10 +846,11 @@ Vue实例和容器是一一对应的,不能一对多和多对一
 <p>数组写法适用于：要绑定多个样式，个数不确定，名字也不确定。</p>
 <p><strong>对象写法</strong></p>
 <p>对象写法适用于：要绑定多个样式，个数确定，名字也确定，但不确定用不用。</p>
-<h4 id="style样式"><a href="#style样式" class="headerlink" title="style样式"></a><strong>style样式</strong></h4><p>有两种写法，对象写法，数组写法.</p>
+<h4 id="style样式"><strong>style样式</strong></h4>
+<p>有两种写法，对象写法，数组写法.</p>
 <p>:style = “{forntSize:xxx}” ,xxx时动态值</p>
-<p>:style=”[a,b]”  a,b是样式对象</p>
-<pre><code class="html">&lt;!DOCTYPE html&gt;
+<p>:style=“[a,b]”  a,b是样式对象</p>
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
 &lt;html lang="en"&gt;
 &lt;head&gt;
     &lt;meta charset="UTF-8"&gt;
@@ -878,20 +936,23 @@ Vue实例和容器是一一对应的,不能一对多和多对一
 &lt;/body&gt;
 &lt;/html&gt;
 </code></pre>
-<h3 id="1-12-条件渲染"><a href="#1-12-条件渲染" class="headerlink" title="1.12 条件渲染"></a>1.12 条件渲染</h3><h4 id="v-if"><a href="#v-if" class="headerlink" title="v-if"></a>v-if</h4><p>写法：</p>
+<h3 id="1-12-条件渲染">1.12 条件渲染</h3>
+<h4 id="v-if">v-if</h4>
+<p>写法：</p>
 <p>(1).v-if=“表达式”</p>
 <p>(2).v-else-if=“表达式”</p>
 <p>(3).v-else=“表达式”</p>
 <p>适用于：切换频率较低的场景</p>
 <p>特点：不展示的DOM元素直接被移除</p>
 <p>注意：v-if可以和:v-else-if、v-else一起使用，但要求结构不能被“打断”</p>
-<h4 id="v-show"><a href="#v-show" class="headerlink" title="v-show"></a><strong>v-show</strong></h4><ul>
+<h4 id="v-show"><strong>v-show</strong></h4>
+<ul>
 <li>写法：v-show=“表达式”</li>
 <li>适用于：切换频率较高的场景</li>
 <li>特点：不展示的DOM元素未被移除，仅仅是使用样式隐藏掉(display:none)</li>
 </ul>
 <p>备注：使用v-if的时，元素可能无法获取到，而使用v-show一定可以获取到;v-if 是实打实地改变dom元素，v-show 是隐藏或显示dom元素</p>
-<pre><code class="html">&lt;!DOCTYPE html&gt;
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
 &lt;html lang="en"&gt;
 &lt;head&gt;
     &lt;meta charset="UTF-8"&gt;
@@ -938,12 +999,14 @@ Vue实例和容器是一一对应的,不能一对多和多对一
 &lt;/body&gt;
 &lt;/html&gt;
 </code></pre>
-<h3 id="1-13-列表渲染"><a href="#1-13-列表渲染" class="headerlink" title="1.13 列表渲染"></a>1.13 列表渲染</h3><h4 id="v-for指令"><a href="#v-for指令" class="headerlink" title="v-for指令"></a>v-for指令</h4><ul>
+<h3 id="1-13-列表渲染">1.13 列表渲染</h3>
+<h4 id="v-for指令">v-for指令</h4>
+<ul>
 <li>用于展示列表数据</li>
 <li>语法：v-for=“(item, index) in xxx” :key=“yyy”</li>
 <li>可遍历：数组、对象、字符串（用的很少）、指定次数（用的很少）</li>
 </ul>
-<pre><code class="html">&lt;!DOCTYPE html&gt;
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
 &lt;html lang="en"&gt;
 &lt;head&gt;
     &lt;meta charset="UTF-8"&gt;
@@ -999,25 +1062,29 @@ Vue实例和容器是一一对应的,不能一对多和多对一
 &lt;/body&gt;
 &lt;/html&gt;
 </code></pre>
-<h4 id="key的原理"><a href="#key的原理" class="headerlink" title="key的原理"></a>key的原理</h4><p>可以先了解一下虚拟DOM和真实DOM，以及它们之间的差异：<a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903895467032589">深入剖析：Vue核心之虚拟DOM使用 Vue 做项目也有两年时间了，对 Vue 的 api也用的比较得心应手了，虽然对 - 掘金</a></p>
+<h4 id="key的原理">key的原理</h4>
+<p>可以先了解一下虚拟DOM和真实DOM，以及它们之间的差异：<a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903895467032589">深入剖析：Vue核心之虚拟DOM使用 Vue 做项目也有两年时间了，对 Vue 的 api也用的比较得心应手了，虽然对 - 掘金</a></p>
 <p><strong>虚拟DOM中key的作用</strong></p>
 <p>key是虚拟DOM对象的标识，当数据发生变化时，Vue会根据【新数据】生成【新的虚拟DOM】, 随后Vue进行【新虚拟DOM】与【旧虚拟DOM】的差异比较，比较规则如下：</p>
 <ol>
-<li><p>旧虚拟DOM中找到了与新虚拟DOM相同的key：</p>
+<li>
+<p>旧虚拟DOM中找到了与新虚拟DOM相同的key：</p>
 <p>①.若虚拟DOM中内容没变, 直接使用之前的真实DOM！</p>
 <p>②.若虚拟DOM中内容变了, 则生成新的真实DOM，随后替换掉页面中之前的真实DOM。</p>
 </li>
-<li><p>旧虚拟DOM中未找到与新虚拟DOM相同的key:</p>
+<li>
+<p>旧虚拟DOM中未找到与新虚拟DOM相同的key:</p>
 <p>创建新的真实DOM，随后渲染到到页面。</p>
 </li>
 </ol>
-<p>	</p>
 <p><strong>用index作为key可能会引发的问题：</strong></p>
 <ol>
-<li><p>若对数据进行：逆序添加、逆序删除等破坏顺序操作：</p>
+<li>
+<p>若对数据进行：逆序添加、逆序删除等破坏顺序操作：</p>
 <p>会产生没有必要的真实DOM更新 ==&gt; 界面效果没问题, 但效率低。</p>
 </li>
-<li><p>如果结构中还包含输入类的DOM：</p>
+<li>
+<p>如果结构中还包含输入类的DOM：</p>
 <p>会产生错误DOM更新==&gt;界面有问题。</p>
 </li>
 </ol>
@@ -1026,7 +1093,7 @@ Vue实例和容器是一一对应的,不能一对多和多对一
 <li>最好使用每条数据的唯一标识作为key，如id，身份证号，手机号，学号等。</li>
 <li>如果不存在对数据的逆序添加，逆序删除等破坏顺序操作，仅用于渲染列表展示，可以使用index作为key。</li>
 </ol>
-<pre><code class="html">&lt;!DOCTYPE html&gt;
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
 &lt;html lang="en"&gt;
 &lt;head&gt;
     &lt;meta charset="UTF-8"&gt;
@@ -1069,12 +1136,13 @@ Vue实例和容器是一一对应的,不能一对多和多对一
 </code></pre>
 <p>Vue中key原理图：</p>
 <p>index作为key时：注意，如果不指定key，Vue会默认用index作为key。</p>
-<p><img src="/2025/01/23/Vue2%E5%AD%A6%E4%B9%A0/image-20250210160230853.png" alt="image-20250210160230853"></p>
+<p><img src="image-20250210160230853.png" alt="image-20250210160230853"></p>
 <p>因为老刘被插到第一个，重刷了 key 的值，vue Diff 算法根据 key 的值判断虚拟DOM 全部发生了改变，然后全部重新生成新的真实 DOM（key所对应的input输入框，算法比对是一样的，所以直接复用了，这导致页面上输入框对不上）。实际上，张三，李四，王五并没有发生更改，是可以直接复用之前的真实 DOM，而因为 key 的错乱，导致要全部重新生成，造成了性能的浪费。</p>
 <p>使用唯一标识作为key时：</p>
-<p><img src="/2025/01/23/Vue2%E5%AD%A6%E4%B9%A0/image-20250210160037121.png" alt="image-20250210160037121"></p>
-<h3 id="1-14-列表过滤"><a href="#1-14-列表过滤" class="headerlink" title="1.14 列表过滤"></a>1.14 列表过滤</h3><p>watch和computed都可以实现，computed更简单方便</p>
-<pre><code class="html">&lt;!DOCTYPE html&gt;
+<p><img src="image-20250210160037121.png" alt="image-20250210160037121"></p>
+<h3 id="1-14-列表过滤">1.14 列表过滤</h3>
+<p>watch和computed都可以实现，computed更简单方便</p>
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
 &lt;html lang="en"&gt;
 &lt;head&gt;
     &lt;meta charset="UTF-8"&gt;
@@ -1125,7 +1193,8 @@ Vue实例和容器是一一对应的,不能一对多和多对一
 &lt;/body&gt;
 &lt;/html&gt;
 </code></pre>
-<h3 id="1-15-列表排序"><a href="#1-15-列表排序" class="headerlink" title="1.15 列表排序"></a>1.15 列表排序</h3><pre><code class="html">&lt;!DOCTYPE html&gt;
+<h3 id="1-15-列表排序">1.15 列表排序</h3>
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
 &lt;html lang="en"&gt;
 &lt;head&gt;
     &lt;meta charset="UTF-8"&gt;
@@ -1181,7 +1250,9 @@ Vue实例和容器是一一对应的,不能一对多和多对一
 &lt;/body&gt;
 &lt;/html&gt;
 </code></pre>
-<h3 id="1-16-Vue监测数据的原理"><a href="#1-16-Vue监测数据的原理" class="headerlink" title="1.16 Vue监测数据的原理"></a>1.16 Vue监测数据的原理</h3><h4 id="监测对象数据："><a href="#监测对象数据：" class="headerlink" title="监测对象数据："></a>监测对象数据：</h4><pre><code class="html">&lt;!DOCTYPE html&gt;
+<h3 id="1-16-Vue监测数据的原理">1.16 Vue监测数据的原理</h3>
+<h4 id="监测对象数据：">监测对象数据：</h4>
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
 &lt;html lang="en"&gt;
 &lt;head&gt;
     &lt;meta charset="UTF-8"&gt;
@@ -1236,7 +1307,7 @@ Vue实例和容器是一一对应的,不能一对多和多对一
 <p>Vue 监测数据变化的原理：</p>
 <p>加工data中的数据（主要是添加响应式的getter和setter方法，用的是Object.defineProperty()方法）==&gt;把加工后的对象传给_data,也就是vm._data = data  ==&gt; 属性值改变会调用set方法，在set方法中去解析模板，生成虚拟DOM，新旧DOM比较，更新页面。</p>
 <p>简单模拟实现一下：</p>
-<pre><code class="html">&lt;!DOCTYPE html&gt;
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
 &lt;html lang="en"&gt;
 &lt;head&gt;
     &lt;meta charset="UTF-8"&gt;
@@ -1278,21 +1349,26 @@ Vue实例和容器是一一对应的,不能一对多和多对一
 <p><strong>Vue.set 的使用</strong></p>
 <p>Vue.set(target，propertyName/index，value) 或vm.$set(target，propertyName/index，value)</p>
 <p>用法：</p>
-<p>向响应式对象中添加一个 property，并确保这个新 property 同样是响应式的，且触发视图更新。它必须用于向响应式<strong>对象</strong>上添加新 property，因为 Vue 无法探测普通的新增 property (比如 vm.myObject.newProperty = ‘xx’)<br>注意：Vue.set() 或 vm.$set() 不能给vm对象和根数据对象_data，添加响应式的属性。</p>
-<p><img src="/2025/01/23/Vue2%E5%AD%A6%E4%B9%A0/image-20250212180852337.png" alt="image-20250212180852337"></p>
-<h4 id="监测数组："><a href="#监测数组：" class="headerlink" title="监测数组："></a>监测数组：</h4><p>vue 没有为数组中的元素生成 getter 和 setter，所以监测不到数据的更改（根据index替换元素的值），也不会引起页面的更新。</p>
+<p>向响应式对象中添加一个 property，并确保这个新 property 同样是响应式的，且触发视图更新。它必须用于向响应式<strong>对象</strong>上添加新 property，因为 Vue 无法探测普通的新增 property (比如 vm.myObject.newProperty = ‘xx’)</p>
+<p><img src="image-20250212180852337.png" alt="image-20250212180852337"></p>
+<h4 id="监测数组：">监测数组：</h4>
+<p>vue 没有为数组中的元素生成 getter 和 setter，所以监测不到数据的更改（根据index替换元素的值），也不会引起页面的更新。</p>
 <p>想要Vue监测到数据变化，需要使用数组的方法进行操作，如：push、pop、shift、unshift、splice等。（这些方法已经被Vue包装了）</p>
-<p><img src="/2025/01/23/Vue2%E5%AD%A6%E4%B9%A0/image-20250213112714047.png" alt="image-20250213112714047"></p>
+<p><img src="image-20250213112714047.png" alt="image-20250213112714047"></p>
 <p>除了用数组方法，当然还可以用Vue.set()或者vm.$set()来修改数组元素。</p>
-<h4 id="总结："><a href="#总结：" class="headerlink" title="总结："></a>总结：</h4><p>Vue监视数据的原理：</p>
-<p>vue会监视data中所有层次的数据</p>
+<h4 id="总结：">总结：</h4>
+<p><strong>Vue监视数据的原理：</strong></p>
+<p>vue会监视data中所有层次的数据。</p>
 <p><strong>如何监测对象中的数据？</strong></p>
 <p>通过setter实现监视，且要在new Vue时就传入要监测的数据。</p>
-<p>对象中后追加的属性，Vue默认不做响应式处理</p>
-<p><strong>如需给后添加的属性做响应式，请使用如下API：</strong></p>
+<p>对象中后追加的属性，Vue默认不做响应式处理，如需给后添加的属性做响应式，请使用如下API：</p>
 <p>Vue.set(target，propertyName/index，value) 或vm.$set(target，propertyName/index，value)</p>
 <p><strong>如何监测数组中的数据？</strong></p>
 <p>通过包裹数组更新元素的方法实现，本质就是做了两件事：</p>
-<p>调用原生对应的方法对数组进行更新<br>重新解析模板，进而更新页面<br><strong>在Vue修改数组中的某个元素一定要用如下方法：</strong></p>
-<p>使用这些API:push()、pop()、shift()、unshift()、splice()、sort()、reverse()<br>Vue.set() 或 vm.$set()</p>
+<p>1、调用原生对应的方法对数组进行更新<br>
+2、重新解析模板，进而更新页面<br>
+<strong>在Vue修改数组中的某个元素一定要用如下方法：</strong></p>
+<p>1、使用这些API:push()、pop()、shift()、unshift()、splice()、sort()、reverse()<br>
+2、Vue.set() 或 vm.$set()</p>
+<p><strong>注意：Vue.set() 或 vm.$set() 不能给vm对象和根数据对象_data，添加响应式的属性。</strong></p>
 </article><section class="jump-container is-flex is-justify-content-space-between my-6"><!-- em is empty placeholder--><a class="button is-default" href="/2025/02/27/SpringBoot%E6%8E%A5%E5%85%A5itext5%E7%94%9F%E6%88%90pdf/" title="SpringBoot接入itext5生成pdf"><i class="iconfont icon-prev mr-2 has-text-grey"></i><span class="has-text-weight-semibold">Previous: SpringBoot接入itext5生成pdf</span></a><a class="button is-default" href="/2024/12/25/%E6%94%AF%E4%BB%98%E5%AE%9DV3%E6%8E%A5%E5%8F%A3%E6%8E%A5%E5%85%A5/" title="支付宝V3接口接入"><span class="has-text-weight-semibold">Next: 支付宝V3接口接入</span><i class="iconfont icon-next ml-2 has-text-grey"></i></a></section><article class="mt-6 comment-container"><script async repo="zhangqingguo/zhangqingguo.github.io" src="https://utteranc.es/client.js" issue-term="pathname" theme="preferred-color-scheme"></script></article></div></div></main></main><footer class="is-flex is-flex-direction-column is-align-items-center is-flex-shrink-0 is-family-serif"><section class="sns-container"><a title="twitter" target="_blank" rel="noopener nofollow" href="//twitter.com//"><i class="iconfont icon-twitter"></i></a><!-- Github--><a title="github" target="_blank" rel="noopener nofollow" href="//github.com/zhangqingguo"><i class="iconfont icon-github"></i></a><!-- Ins--><a title="instagram" target="_blank" rel="noopener nofollow" href="//www.instagram.com//"><i class="iconfont icon-ins"></i></a><!-- RSS--><!-- 知乎--><!-- 领英--><!-- 脸书--><a title="facebook" target="_blank" rel="noopener nofollow" href="//www.facebook.com//"><i class="iconfont icon-tian7_facebook"></i></a></section><p><span>Copyright ©</span><span> ZQG 2025</span></p><div class="is-flex is-justify-content-center is-flex-wrap-wrap"><p>Powered by Hexo &verbar;&nbsp;</p><p class="is-flex is-justify-content-center"><a title="Hexo theme author" target="_blank" rel="noopener" href="//github.com/haojen">Theme by Haojen&nbsp;</a></p><div style="margin-top: 2px"><a class="github-button" title="github-button" target="_blank" rel="noopener" href="https://github.com/haojen/hexo-theme-Claudia" data-color-scheme="no-preference: light; light: light; dark: dark;" data-show-count="true"></a></div></div><div><span></span></div></footer><script async defer src="https://buttons.github.io/buttons.js"></script><script src="/js/jquery-3.6.1.min.js"></script><script src="/js/jquery-fancybox.min.js"></script><script src="/js/img_zoom.js"></script><script src="/js/post.js"> </script><script src="/live2d_models/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2d_models/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2d_models/assets/Bronya.model.json"},"display":{"position":"right","width":240,"height":360,"right":"-80px","hOffset":0,"vOffset":-20},"mobile":{"show":true},"react":{"opacity":0.7},"log":false});</script></body></html>
