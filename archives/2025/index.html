@@ -13,22 +13,32 @@ html作为模板，（Thymeleaf、freemaker等模板引擎）渲染数据，最�
 使用pdf模板（使用占位符，比如${name}），用数据替换占位符，最后生成pdf。比较复杂，不容易实现，不建议。
 
 如何得到pdf文件，主要有两种方法，一种是写代码生成，还有就是用pdf转换工具，比如wkhtmltopdf之类的。由于在项目中考虑到，使用html的方案，在修改模板时对用户不友好，所以采用了方案2：pdf模板+表单+填充数据。
-工具使用itext5，因为itext7..</p><a class="button is-default mt-2 has-text-weight-semibold" href="/2025/02/27/SpringBoot%E6%8E%A5%E5%85%A5itext5%E7%94%9F%E6%88%90pdf/">Read more</a></section></article><article class="post-item-card"><header class="is-relative is-flex"><div class="post-cover-backdrop is-hidden"><img src="https://img-blog.csdnimg.cn/02f5aad7bfc440789dfa852b370f740d.webp" alt="loading.."></div><a class="post-cover-link has-text-centered skeleton" href="/2025/01/23/Vue2%E5%AD%A6%E4%B9%A0/"><img class="post-cover-img js-img-fadeIn" src="https://img-blog.csdnimg.cn/02f5aad7bfc440789dfa852b370f740d.webp" alt="loading.." data-backdrop="true"></a></header><section class="content post-card-content p-4 pb-5"><header><a href="/tags/Vue"><i class="tag post-item-tag">Vue</i></a><a href="/tags/Vue2"><i class="tag post-item-tag">Vue2</i></a><a href="/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%8C%E5%89%8D%E7%AB%AF"><i class="tag post-item-tag">学习笔记，前端</i></a></header><h2 class="mt-4 mb-0 is-family-serif"><a href="/2025/01/23/Vue2%E5%AD%A6%E4%B9%A0/">Vue2学习</a></h2><time class="has-text-grey" datetime="2025-01-23T01:20:56.000Z">2025-01-23</time><p class="is-flex-grow-2 mt-2">Vue2学习视频教程来自尚硅谷：尚硅谷Vue2.0+Vue3.0全套教程丨vuejs从入门到精通_哔哩哔哩_bilibili,vue2文档：介绍 — Vue.js
-1. vue基础知识和原理1.1 初识vue
+工具使用itext5，因为itext7..</p><a class="button is-default mt-2 has-text-weight-semibold" href="/2025/02/27/SpringBoot%E6%8E%A5%E5%85%A5itext5%E7%94%9F%E6%88%90pdf/">Read more</a></section></article><article class="post-item-card"><header class="is-relative is-flex"><div class="post-cover-backdrop is-hidden"><img src="https://img-blog.csdnimg.cn/02f5aad7bfc440789dfa852b370f740d.webp" alt="loading.."></div><a class="post-cover-link has-text-centered skeleton" href="/2025/01/23/Vue2%E5%AD%A6%E4%B9%A0/"><img class="post-cover-img js-img-fadeIn" src="https://img-blog.csdnimg.cn/02f5aad7bfc440789dfa852b370f740d.webp" alt="loading.." data-backdrop="true"></a></header><section class="content post-card-content p-4 pb-5"><header><a href="/tags/Vue"><i class="tag post-item-tag">Vue</i></a><a href="/tags/Vue2"><i class="tag post-item-tag">Vue2</i></a><a href="/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%8C%E5%89%8D%E7%AB%AF"><i class="tag post-item-tag">学习笔记，前端</i></a></header><h2 class="mt-4 mb-0 is-family-serif"><a href="/2025/01/23/Vue2%E5%AD%A6%E4%B9%A0/">Vue2学习</a></h2><time class="has-text-grey" datetime="2025-01-23T01:20:56.000Z">2025-01-23</time><p class="is-flex-grow-2 mt-2">Vue2学习
+视频教程来自尚硅谷：尚硅谷Vue2.0+Vue3.0全套教程丨vuejs从入门到精通_哔哩哔哩_bilibili,vue2文档：介绍 — Vue.js
+1. vue基础知识和原理
+1.1 初识vue
+
+
 想让Vue工作，就必须创建一个Vue实例，且要传入一个配置对象
+
 
 app容器里的代码依然符合html规范，只不过混入了一些特殊的Vue语法
 
+
 app容器里的代码被称为【Vue模板】
+
 
 Vue实例和容器是一一对应的,不能一对多和多对一
 
+
 真实开发中只有一个Vue实例，并且会配合着组件一起使用
 
-是Vue的语法：插值表达式，可以读取到data中的所有属性
-一旦data中的数据发生改变，那么页面中用到该数据的地方也会自动更新(Vue实现的响应式)代码：这里是直接引入开发版本的vue.js,可以去官网下载
 
-..</p><a class="button is-default mt-2 has-text-weight-semibold" href="/2025/01/23/Vue2%E5%AD%A6%E4%B9%A0/">Read more</a></section></article></section><aside class="column is-hidden-mobile is-4-tablet is-3-widescreen"><div style="position: sticky; top: 50px;"><main class="aside-card-container archives-widget is-in-archive-page"><h3>Archives</h3><section><ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/03/">March 2025</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/02/">February 2025</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/01/">January 2025</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/12/">December 2024</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/06/">June 2024</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/04/">April 2024</a><span class="archive-list-count">1</span></li></ul></section></main><!--#hexo_electric_clock--><!--include widget/widget-clock--></div></aside></div></article><script>$claudia.fadeInImage(null, $claudia.blurBackdropImg)
+是Vue的语法：插值表达式，可以读取到data中的所有属性
+
+
+一旦data中的数据发生改变，那么页面中用到该数据的地方也会自动更新(Vue实现的响应式)
+代码：这里是直接引入开发版本的vue...</p><a class="button is-default mt-2 has-text-weight-semibold" href="/2025/01/23/Vue2%E5%AD%A6%E4%B9%A0/">Read more</a></section></article></section><aside class="column is-hidden-mobile is-4-tablet is-3-widescreen"><div style="position: sticky; top: 50px;"><main class="aside-card-container archives-widget is-in-archive-page"><h3>Archives</h3><section><ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/03/">March 2025</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/02/">February 2025</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/01/">January 2025</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/12/">December 2024</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/06/">June 2024</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/04/">April 2024</a><span class="archive-list-count">1</span></li></ul></section></main><!--#hexo_electric_clock--><!--include widget/widget-clock--></div></aside></div></article><script>$claudia.fadeInImage(null, $claudia.blurBackdropImg)
 
 window.addEventListener('resize', $claudia.throttle(function () {
     var images = document.querySelectorAll('.js-img-fadeIn')
