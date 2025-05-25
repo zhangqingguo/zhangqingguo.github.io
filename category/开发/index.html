@@ -16,22 +16,32 @@ html作为模板，（Thymeleaf、freemaker等模板引擎）渲染数据，最�
 使用pdf模板（使用占位符，比如${name}），用数据替换占位符，最后生成pdf。比较复杂，不容易实现，不建议。
 
 如何得到pdf文件，主要有两种方法，一种是写代码生成，还有就是用pdf转换工具，比如wkhtmltopdf之类的。由于在项目中考虑到，使用html的方案，在修改模板时对用户不友好，所以采用了方案2：pdf模板+表单+填充数据。
-工具使用itext5，因为itext7..</p><a class="button is-default mt-2 has-text-weight-semibold" href="/2025/02/27/SpringBoot%E6%8E%A5%E5%85%A5itext5%E7%94%9F%E6%88%90pdf/">Read more</a></section></article><article class="post-item-card"><header class="is-relative is-flex"><div class="post-cover-backdrop is-hidden"><img src="https://img-blog.csdnimg.cn/02f5aad7bfc440789dfa852b370f740d.webp" alt="loading.."></div><a class="post-cover-link has-text-centered skeleton" href="/2025/01/23/Vue2%E5%AD%A6%E4%B9%A0/"><img class="post-cover-img js-img-fadeIn" src="https://img-blog.csdnimg.cn/02f5aad7bfc440789dfa852b370f740d.webp" alt="loading.." data-backdrop="true"></a></header><section class="content post-card-content p-4 pb-5"><header><a href="/tags/Vue"><i class="tag post-item-tag">Vue</i></a><a href="/tags/Vue2"><i class="tag post-item-tag">Vue2</i></a><a href="/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%8C%E5%89%8D%E7%AB%AF"><i class="tag post-item-tag">学习笔记，前端</i></a></header><h2 class="mt-4 mb-0 is-family-serif"><a href="/2025/01/23/Vue2%E5%AD%A6%E4%B9%A0/">Vue2学习</a></h2><time class="has-text-grey" datetime="2025-01-23T01:20:56.000Z">2025-01-23</time><p class="is-flex-grow-2 mt-2">Vue2学习视频教程来自尚硅谷：尚硅谷Vue2.0+Vue3.0全套教程丨vuejs从入门到精通_哔哩哔哩_bilibili,vue2文档：介绍 — Vue.js
-1. vue基础知识和原理1.1 初识vue
+工具使用itext5，因为itext7..</p><a class="button is-default mt-2 has-text-weight-semibold" href="/2025/02/27/SpringBoot%E6%8E%A5%E5%85%A5itext5%E7%94%9F%E6%88%90pdf/">Read more</a></section></article><article class="post-item-card"><header class="is-relative is-flex"><div class="post-cover-backdrop is-hidden"><img src="https://img-blog.csdnimg.cn/02f5aad7bfc440789dfa852b370f740d.webp" alt="loading.."></div><a class="post-cover-link has-text-centered skeleton" href="/2025/01/23/Vue2%E5%AD%A6%E4%B9%A0/"><img class="post-cover-img js-img-fadeIn" src="https://img-blog.csdnimg.cn/02f5aad7bfc440789dfa852b370f740d.webp" alt="loading.." data-backdrop="true"></a></header><section class="content post-card-content p-4 pb-5"><header><a href="/tags/Vue"><i class="tag post-item-tag">Vue</i></a><a href="/tags/Vue2"><i class="tag post-item-tag">Vue2</i></a><a href="/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%8C%E5%89%8D%E7%AB%AF"><i class="tag post-item-tag">学习笔记，前端</i></a></header><h2 class="mt-4 mb-0 is-family-serif"><a href="/2025/01/23/Vue2%E5%AD%A6%E4%B9%A0/">Vue2学习</a></h2><time class="has-text-grey" datetime="2025-01-23T01:20:56.000Z">2025-01-23</time><p class="is-flex-grow-2 mt-2">Vue2学习
+视频教程来自尚硅谷：尚硅谷Vue2.0+Vue3.0全套教程丨vuejs从入门到精通_哔哩哔哩_bilibili,vue2文档：介绍 — Vue.js
+1. vue基础知识和原理
+1.1 初识vue
+
+
 想让Vue工作，就必须创建一个Vue实例，且要传入一个配置对象
+
 
 app容器里的代码依然符合html规范，只不过混入了一些特殊的Vue语法
 
+
 app容器里的代码被称为【Vue模板】
+
 
 Vue实例和容器是一一对应的,不能一对多和多对一
 
+
 真实开发中只有一个Vue实例，并且会配合着组件一起使用
 
-是Vue的语法：插值表达式，可以读取到data中的所有属性
-一旦data中的数据发生改变，那么页面中用到该数据的地方也会自动更新(Vue实现的响应式)代码：这里是直接引入开发版本的vue.js,可以去官网下载
 
-..</p><a class="button is-default mt-2 has-text-weight-semibold" href="/2025/01/23/Vue2%E5%AD%A6%E4%B9%A0/">Read more</a></section></article><article class="post-item-card"><header class="is-relative is-flex"><div class="post-cover-backdrop is-hidden"><img src="https://gw.alipayobjects.com/os/skylark-tools/public/files/0ba3e82ad37ecf8649ee4219cfe9d16b.png%26originHeight%3D2023%26originWidth%3D2815%26size%3D526149%26status%3Ddone%26width%3D2815" alt="loading.."></div><a class="post-cover-link has-text-centered skeleton" href="/2024/12/25/%E6%94%AF%E4%BB%98%E5%AE%9DV3%E6%8E%A5%E5%8F%A3%E6%8E%A5%E5%85%A5/"><img class="post-cover-img js-img-fadeIn" src="https://gw.alipayobjects.com/os/skylark-tools/public/files/0ba3e82ad37ecf8649ee4219cfe9d16b.png%26originHeight%3D2023%26originWidth%3D2815%26size%3D526149%26status%3Ddone%26width%3D2815" alt="loading.." data-backdrop="true"></a></header><section class="content post-card-content p-4 pb-5"><header><a href="/tags/Alipay"><i class="tag post-item-tag">Alipay</i></a><a href="/tags/SpringBoot"><i class="tag post-item-tag">SpringBoot</i></a></header><h2 class="mt-4 mb-0 is-family-serif"><a href="/2024/12/25/%E6%94%AF%E4%BB%98%E5%AE%9DV3%E6%8E%A5%E5%8F%A3%E6%8E%A5%E5%85%A5/">支付宝V3接口接入</a></h2><time class="has-text-grey" datetime="2024-12-25T07:18:26.000Z">2024-12-25</time><p class="is-flex-grow-2 mt-2">SpringBoot项目接入支付宝v3接口1、接入准备首先到支付宝开放平台注册或者登录，选择移动/网页支付，按照页面的指引进行接入（正式生产环境是必须要申请账号、创建应用、配置相关参数等）。如果只是开发测试，可以使用支付宝提供的沙箱环境，下面的所有的内容都是基于沙箱环境的。
+是Vue的语法：插值表达式，可以读取到data中的所有属性
+
+
+一旦data中的数据发生改变，那么页面中用到该数据的地方也会自动更新(Vue实现的响应式)
+代码：这里是直接引入开发版本的vue...</p><a class="button is-default mt-2 has-text-weight-semibold" href="/2025/01/23/Vue2%E5%AD%A6%E4%B9%A0/">Read more</a></section></article><article class="post-item-card"><header class="is-relative is-flex"><div class="post-cover-backdrop is-hidden"><img src="https://gw.alipayobjects.com/os/skylark-tools/public/files/0ba3e82ad37ecf8649ee4219cfe9d16b.png%26originHeight%3D2023%26originWidth%3D2815%26size%3D526149%26status%3Ddone%26width%3D2815" alt="loading.."></div><a class="post-cover-link has-text-centered skeleton" href="/2024/12/25/%E6%94%AF%E4%BB%98%E5%AE%9DV3%E6%8E%A5%E5%8F%A3%E6%8E%A5%E5%85%A5/"><img class="post-cover-img js-img-fadeIn" src="https://gw.alipayobjects.com/os/skylark-tools/public/files/0ba3e82ad37ecf8649ee4219cfe9d16b.png%26originHeight%3D2023%26originWidth%3D2815%26size%3D526149%26status%3Ddone%26width%3D2815" alt="loading.." data-backdrop="true"></a></header><section class="content post-card-content p-4 pb-5"><header><a href="/tags/Alipay"><i class="tag post-item-tag">Alipay</i></a><a href="/tags/SpringBoot"><i class="tag post-item-tag">SpringBoot</i></a></header><h2 class="mt-4 mb-0 is-family-serif"><a href="/2024/12/25/%E6%94%AF%E4%BB%98%E5%AE%9DV3%E6%8E%A5%E5%8F%A3%E6%8E%A5%E5%85%A5/">支付宝V3接口接入</a></h2><time class="has-text-grey" datetime="2024-12-25T07:18:26.000Z">2024-12-25</time><p class="is-flex-grow-2 mt-2">SpringBoot项目接入支付宝v3接口1、接入准备首先到支付宝开放平台注册或者登录，选择移动/网页支付，按照页面的指引进行接入（正式生产环境是必须要申请账号、创建应用、配置相关参数等）。如果只是开发测试，可以使用支付宝提供的沙箱环境，下面的所有的内容都是基于沙箱环境的。
 打开控制台首页 - 开放平台，选择开发工具里的沙箱，可以查看支付宝分配给你的沙箱环境账号信息，特别是公钥和私钥，或者证书。本次开发，我用的是公钥和私钥的接口加签方式，使用证书也可以，只不过在1.0和2.0版本的接口，公私钥和证书的代码有些许不同，貌似在3.0版本中，代码都一样，只要在AlipayConfig中给相应字段赋值接可以了。
 总之，接入准备的步骤，详细看支付宝官方文档，这里就不详细介绍了。
 2、开发环境开发工具：idea + m..</p><a class="button is-default mt-2 has-text-weight-semibold" href="/2024/12/25/%E6%94%AF%E4%BB%98%E5%AE%9DV3%E6%8E%A5%E5%8F%A3%E6%8E%A5%E5%85%A5/">Read more</a></section></article></section><aside class="column is-hidden-mobile is-4-tablet is-3-widescreen"><div style="position: sticky; top: 50px;"><main class="aside-card-container categories-widget category-page"><h3>Categories</h3><section><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/category/test/">test</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/category/%E5%BC%80%E5%8F%91/">开发</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/category/%E6%95%99%E7%A8%8B/">教程</a><span class="category-list-count">1</span></li></ul></section></main></div></aside></div></article><script>$claudia.fadeInImage(null, $claudia.blurBackdropImg)
