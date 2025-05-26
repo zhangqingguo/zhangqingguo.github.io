@@ -2378,7 +2378,7 @@ Vue.use(MyPlugins,111)
 <p>第二种方式，在父组件中：</p>
 <p>使用 <code>this.$refs.xxx.$on()</code> 这样写起来更灵活，比如可以加定时器。this.$refs.xxx.$once()，只调用一次。</p>
 <p>App.vue ，给student组件绑定自定义事件：<code>zqg</code></p>
-<pre><code class="javascript">&lt;StudentInfo ref="student" @click.native="show"&gt;&lt;/StudentInfo&gt;
+<pre><code class="html">&lt;StudentInfo ref="student" @click.native="show"&gt;&lt;/StudentInfo&gt;
 ...
 methods: {
   //可以声明接收多个参数，也可以指定一个参数，其他参数全部存到params数组中
