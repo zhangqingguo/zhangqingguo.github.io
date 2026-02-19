@@ -32,14 +32,14 @@
 <p><em>签名验证<strong>token</strong>，在调用<strong>API</strong>时，需要携带**secretToken</em></p>
 <p><em>回调的加密<strong>key</strong>，以及回调的<strong>url</strong>地址。</em></p>
 <p><img src="/2025/04/09/SpringBoot%E6%8E%A5%E5%85%A5%E8%85%BE%E8%AE%AF%E7%94%B5%E5%AD%90%E7%AD%BE/img8.png" alt="img"></p>
-<p><em>secretId .</em> <em>腾讯云**ak/sk (secretId/secretKey)</em> <em>调用<strong>API</strong>的密钥对，通过腾讯云后台<strong>CAM</strong>控制台获取</em></p>
-<p>*secretKey .<strong>腾讯云</strong>ak/sk (secretId/secretKey)* <em>调用<strong>API</strong>的密钥对，通过腾讯云后台<strong>CAM</strong>控制台获取</em></p>
+<p>secretId. 腾讯云ak/sk (secretId/secretKey)调用<strong>API</strong>的密钥对，通过腾讯云后台<strong>CAM</strong>控制台获取</p>
+<p>secretKey.腾讯云ak/sk (secretId/secretKey) 调用<strong>API</strong>的密钥对，通过腾讯云后台<strong>CAM</strong>控制台获取</p>
 <p><img src="/2025/04/09/SpringBoot%E6%8E%A5%E5%85%A5%E8%85%BE%E8%AE%AF%E7%94%B5%E5%AD%90%E7%AD%BE/img9.png" alt="img"></p>
 <p>还需要一个经办人id即管理员用户<strong>id</strong>或者员工用户<strong>id</strong>，电子签控制台获取。在<strong>更多–》组织管理</strong>可以得到。</p>
 <p><img src="/2025/04/09/SpringBoot%E6%8E%A5%E5%85%A5%E8%85%BE%E8%AE%AF%E7%94%B5%E5%AD%90%E7%AD%BE/img10.png" alt="img"></p>
 <p>最后就是腾讯云API域名地址：</p>
 <p>测试环境：endPoint = “ess.test.ess.tencent.cn”，fileServiceEndPoint = “file.test.ess.tencent.cn”</p>
-<p>正式环境：endPoint = “<em>ess.tencentcloudapi.com</em>“，fileServiceEndPoint = “<em>file.ess.tencent.cn</em>“</p>
+<p>正式环境：endPoint = “ess.tencentcloudapi.com”，fileServiceEndPoint = “file.ess.tencent.cn”</p>
 <h3 id="2-4-对接腾讯SDK，进行业务开发"><a href="#2-4-对接腾讯SDK，进行业务开发" class="headerlink" title="2.4 对接腾讯SDK，进行业务开发"></a>2.4 <strong>对接腾讯SDK，进行业务开发</strong></h3><h4 id="2-4-1-引入依赖"><a href="#2-4-1-引入依赖" class="headerlink" title="2.4.1 引入依赖"></a>2.4.1 <strong>引入依赖</strong></h4><p>项目中接入腾讯云SDK：使用最新的版本。</p>
 <p><img src="/2025/04/09/SpringBoot%E6%8E%A5%E5%85%A5%E8%85%BE%E8%AE%AF%E7%94%B5%E5%AD%90%E7%AD%BE/img11.png" alt="img"></p>
 <p><img src="/2025/04/09/SpringBoot%E6%8E%A5%E5%85%A5%E8%85%BE%E8%AE%AF%E7%94%B5%E5%AD%90%E7%AD%BE/img12.png" alt="img"></p>
