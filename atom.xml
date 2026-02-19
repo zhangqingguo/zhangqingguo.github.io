@@ -49,15 +49,14 @@
     <link href="http://example.com/2025/03/27/python%E5%AD%A6%E4%B9%A0/"/>
     <id>http://example.com/2025/03/27/python%E5%AD%A6%E4%B9%A0/</id>
     <published>2025-03-27T06:23:46.000Z</published>
-    <updated>2025-03-27T06:41:42.758Z</updated>
+    <updated>2026-02-19T08:10:12.310Z</updated>
     
-    <content type="html"><![CDATA[<h2 id="1、前言">1、前言</h2><p>一直想学习python，于是在工作之余看免费的教程学习，但是因为工作忙或者自律性不够，总是断断续续，所以想记录一下学习笔记，方便复习和督促自己坚持学下去。视频教程来自：<a href="https://www.bilibili.com/video/BV1wD4y1o7AS/">https://www.bilibili.com/video/BV1wD4y1o7AS/</a></p><h2 id="2、学习内容">2、学习内容</h2><h3 id="1、python简介及开发环境">1、python简介及开发环境</h3>]]></content>
+    <content type="html"><![CDATA[<h2 id="1、前言"><a href="#1、前言" class="headerlink" title="1、前言"></a>1、前言</h2><p>一直想学习python，于是在工作之余看免费的教程学习，但是因为工作忙或者自律性不够，总是断断续续，所以想记录一下学习笔记，方便复习和督促自己坚持学下去。视频教程来自：<a href="https://www.bilibili.com/video/BV1wD4y1o7AS/">https://www.bilibili.com/video/BV1wD4y1o7AS/</a></p><p>源码地址：<a href="https://gitee.com/zqg2233/pystudy">pystudy: python学习代码</a></p><h2 id="2、学习内容"><a href="#2、学习内容" class="headerlink" title="2、学习内容"></a>2、学习内容</h2><h3 id="1、python简介及开发环境"><a href="#1、python简介及开发环境" class="headerlink" title="1、python简介及开发环境"></a>1、python简介及开发环境</h3>]]></content>
     
     
       
       
-    <summary type="html">&lt;h2 id=&quot;1、前言&quot;&gt;1、前言&lt;/h2&gt;
-&lt;p&gt;一直想学习python，于是在工作之余看免费的教程学习，但是因为工作忙或者自律性不够，总是断断续续，所以想记录一下学习笔记，方便复习和督促自己坚持学下去。视频教程来自：&lt;a href=&quot;https://www.bilibili</summary>
+    <summary type="html">&lt;h2 id=&quot;1、前言&quot;&gt;&lt;a href=&quot;#1、前言&quot; class=&quot;headerlink&quot; title=&quot;1、前言&quot;&gt;&lt;/a&gt;1、前言&lt;/h2&gt;&lt;p&gt;一直想学习python，于是在工作之余看免费的教程学习，但是因为工作忙或者自律性不够，总是断断续续，所以想记录一下学习笔记，</summary>
       
     
     
