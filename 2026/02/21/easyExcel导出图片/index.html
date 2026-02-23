@@ -358,6 +358,15 @@ public class TestExport {
 <p><img src="image-20260223194559783.png" alt="image-20260223194559783"></p>
 <p>缺点：图片多，导出时间长，文件大小比较大。如何只是导出少量图片，这种方法可以满足需求。</p>
 <h3 id="2-2-不用注解，使用自定义handler处理图片位置并写入，同时可以加入图片压缩的逻辑，这样比较灵活。">2.2 不用注解，使用自定义handler处理图片位置并写入，同时可以加入图片压缩的逻辑，这样比较灵活。</h3>
+<p>图片压缩依赖：</p>
+<pre><code class="language-xml">    &lt;!-- Thumbnailator 图片处理库 --&gt;
+    &lt;dependency&gt;
+        &lt;groupId&gt;net.coobird&lt;/groupId&gt;
+        &lt;artifactId&gt;thumbnailator&lt;/artifactId&gt;
+        &lt;version&gt;0.4.19&lt;/version&gt; &lt;!-- 推荐最新稳定版 --&gt;
+    &lt;/dependency&gt;
+&lt;/dependencies&gt;
+</code></pre>
 <p>导出实体VO：</p>
 <pre><code class="language-java">import com.alibaba.excel.annotation.ExcelIgnoreUnannotated;
 import com.alibaba.excel.annotation.ExcelProperty;
